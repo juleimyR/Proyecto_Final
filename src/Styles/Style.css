@@ -1,0 +1,273 @@
+/*Style View_Arranque*/
+.btnMin{
+    -fx-background-color: #e2e2e2;
+}
+
+.btnMin:hover{
+    -fx-background-color: #e2ecf3;
+    -fx-border-color: #7db3ea;
+}
+
+.btnSalir{
+    -fx-background-color: #fa0b0c;
+}
+
+.btnSalir:hover{
+    -fx-background-color: #be1414;
+    -fx-border-color: #fff1f9;
+    -fx-text-fill: #ffffff;
+}
+
+.Buttons{
+    -fx-background-color: #e2ffff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 0.5px 10px;
+    -fx-border-width: 2;
+    -fx-border-radius: 5 5 5 5;
+    -fx-border-color: linear-gradient(to right, #4FD1C5, #38B2AC, #319795);
+}
+
+.Buttons:hover {
+    -fx-background-color: linear-gradient(to bottom right, #4FD1C5, #2196F3);
+    -fx-cursor: hand;
+    -fx-opacity-: 0.10;
+}
+/*Style View_Arranque*/
+
+/*Style Login*/
+.panelUser{
+    -fx-background-color:  #C2DDEA;
+    -fx-border-radius: 8 8 8 8;
+    -fx-border-color: #040806;
+    -fx-border-width: 3;
+}
+
+.labels{
+    -fx-font-size: 1em;
+    -fx-text-fill: #000000;
+    -fx-alignment: center-left;
+    -fx-font-family: 'Montserrat', sans-serif;
+}
+
+.btnLogin{
+    -fx-background-color: #FFFFFF;
+    -fx-font-size: 12px;
+    -fx-text-fill: #333;
+    -fx-border-width: 1;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5 5 5 5;
+}
+
+.btnLogin:hover{
+    -fx-border-width: 2;
+    -fx-border-color: #00D1FF;
+}
+
+.labelR{
+    -fx-font-size: 1em;
+    -fx-text-fill: #000000;
+    -fx-alignment: center-left;
+    -fx-underline: true;
+    -fx-font-family: 'Montserrat', sans-serif;
+    -fx-background-color: linear-gradient(to bottom, transparent, #FFFFFF);
+}
+
+.labelR:hover{
+    -fx-text-fill: #00D1FF;
+}
+
+.labelR:pressed{
+    -fx-text-fill: #000000;
+}
+
+.textField{
+    -fx-background-color: #D8EEF8;
+    -fx-border-radius: 5 5 5 5;
+    -fx-border-color: #040806;
+    -fx-border-width: 2;
+}
+/*Style Login*/
+
+/*Style View_Catalogo_Principal*/
+
+/*Buttons*/
+.btnMenu{
+    -fx-background-color: linear-gradient(to right, #319795, #4FD1C5, #319795);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: #040806;
+    -fx-font-size: 12px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 5;
+    -fx-transition: transform 0.3s;
+    -fx-border-width: 1;
+}
+
+.btnMenu:hover{
+    -fx-cursor: hand;
+    -fx-border-width: 2;
+    -fx-transform: scale(1.1);
+}
+
+.btnMenu:pressed{
+    -fx-background-color: linear-gradient(to right,  #4FD1C5, #319795, #4FD1C5);
+    -fx-cursor: closed-hand;
+}
+
+/*ComboBox Styles*/
+.combo-box {
+    -fx-appearance: none;
+}
+
+.combo-box .content-input {
+    -fx-max-width: 50px;
+    -fx-position: relative;
+    -fx-font-family: 'Montserrat', sans-serif;
+}
+
+.combo-box .text-input {
+    -fx-padding: 4px 8px;
+    -fx-font-size: 1em;
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #7b7b7b;
+    -fx-border-color: rgba(0, 0, 0, 0.2);
+    -fx-border-width: 2px;
+    -fx-border-radius: 12px;
+    -fx-cursor: hand;
+    -fx-alignment: center-left;
+}
+
+.combo-box:hover .text-input {
+    -fx-background-color: #B1E8CD;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-shape: "M0 0 L1 0 L0.5 1 Z";
+    -fx-background-color: #040467;
+    -fx-rotate: 135;
+    -fx-size: 16px;
+    -fx-margin-right: 20px;
+    -fx-margin-top: -3px;
+    -fx-transition: transform 0.25s ease;
+}
+
+.combo-box:hover .arrow-button .arrow {
+    -fx-margin-top: 0px;
+}
+
+.combo-box:armed .arrow-button .arrow {
+    -fx-rotate: 45;
+}
+
+/*buttons addCar*/
+.btnAdd{
+    -fx-background-color: linear-gradient(to right, #ffcccf, #ffa69e, #ffcccf);
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1;
+    -fx-border-color: #000000;
+    -fx-transition: transform 0.3s;
+}
+
+.btnAdd:hover{
+    -fx-border-width: 2;
+    -fx-transform: scale(1.1);
+}
+
+.btnAdd:pressed{
+    -fx-background-color: linear-gradient(to right, #ffa69e, #ffcccf, #ffa69e);
+    -fx-cursor: closed-hand;
+}
+
+.btnIcon{
+    -fx-border-radius: 30 30 30 30;
+    -fx-background-color:  #A6CADB;
+    -fx-border-color: #040806;
+}
+
+.btnIcon .ImageView{
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-color: transparent;
+}
+
+.btnIcon:hover{
+    -fx-border-radius: 25 25 25 25;
+    -fx-opacity: 0.8;
+    -fx-cursor: hand;
+    -fx-border-width: 2;
+}
+
+.btnIcon:pressed{
+    -fx-cursor: closed-hand;
+}
+
+/*Menú items*/
+.styled-items {
+    -fx-font-size: 12px;
+    -fx-padding: 8px 16px;
+    -fx-text-fill: #333;
+    -fx-background-color: #fff;
+    -fx-border-width: 1;
+    -fx-border-color: #ccc;
+    -fx-cursor: hand;
+}
+
+.styled-items:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #007bff;
+}
+
+.styled-items:focus {
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #007bff;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+    -fx-outline: none;
+}
+
+.styled-items:pressed {
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #007bff;
+}
+
+.panelView{
+    -fx-background-color: whitesmoke;
+    -fx-cursor: open-hand;
+}
+
+.panelView:pressed{
+    -fx-cursor: closed-hand;
+}
+
+/*Retrocess Buttons*/
+.back-button {
+    -fx-background-color: #dc2626;
+    -fx-border-color: #000000;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-border-radius: 5px; 
+    -fx-border-width: 1;
+}
+
+.back-button:hover {
+    -fx-background-color: #c53030;
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+}
+
+.back-button:pressed {
+    -fx-cursor: closed-hand;
+}
+
+.gridCarro{
+    -fx-border-color: #333;
+    -fx-border-width: 2;
+    -fx-padding: 2 2 2 2;
+    -fx-hgap: 5px;
+}
+/*Style View_Catalogo_Principal*/
+
