@@ -25,7 +25,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -39,7 +38,6 @@ import javax.swing.JOptionPane;
 public class Controller_View_Catalogo_Principal implements Initializable {
 
     private Map<Pane, Image> paneImageMap;
-
     @FXML
     private AnchorPane root;
     @FXML
@@ -402,211 +400,420 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             }
         });
 
-        switch (eventBtn.getId()) {
-            case "btnAggCrto1":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen1.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+        if (lblGenero01.getText().equals("MASCULINO")) {
+            switch (eventBtn.getId()) {
+                case "btnAggCrto1":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen1.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla1.getValue());
-                lblPrecio.setText(lblPrecio01.getText());
-                lblMarca.setText(lblMarca01.getText());
-                lblGenero.setText(lblGenero01.getText());
-                lblTipo.setText(lblTipo01.getText());
+                    lblTalla.setText(cmbTalla1.getValue());
+                    lblPrecio.setText(lblPrecio01.getText());
+                    lblMarca.setText(lblMarca01.getText());
+                    lblGenero.setText(lblGenero01.getText());
+                    lblTipo.setText(lblTipo01.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
+                    //tomarValor(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
 
-                break;
-            case "btnAggCrto2":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen2.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+                    break;
+                case "btnAggCrto2":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen2.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla2.getValue());
-                lblPrecio.setText(lblPrecio02.getText());
-                lblMarca.setText(lblMarca02.getText());
-                lblGenero.setText(lblGenero02.getText());
-                lblTipo.setText(lblTipo02.getText());
+                    lblTalla.setText(cmbTalla2.getValue());
+                    lblPrecio.setText(lblPrecio02.getText());
+                    lblMarca.setText(lblMarca02.getText());
+                    lblGenero.setText(lblGenero02.getText());
+                    lblTipo.setText(lblTipo02.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca02, lblTipo02, lblPrecio02, lblGenero02, cmbTalla2);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
+                    //tomarValor(lblMarca02, lblTipo02, lblPrecio02, lblGenero02, cmbTalla2);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
 
-                break;
+                    break;
 
-            case "btnAggCrto3":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen3.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+                case "btnAggCrto3":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen3.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla3.getValue());
-                lblPrecio.setText(lblPrecio03.getText());
-                lblMarca.setText(lblMarca03.getText());
-                lblGenero.setText(lblGenero03.getText());
-                lblTipo.setText(lblTipo03.getText());
+                    lblTalla.setText(cmbTalla3.getValue());
+                    lblPrecio.setText(lblPrecio03.getText());
+                    lblMarca.setText(lblMarca03.getText());
+                    lblGenero.setText(lblGenero03.getText());
+                    lblTipo.setText(lblTipo03.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca03, lblTipo03, lblPrecio03, lblGenero03, cmbTalla3);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
-                break;
-            case "btnAggCrto4":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen4.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+                    //tomarValor(lblMarca03, lblTipo03, lblPrecio03, lblGenero03, cmbTalla3);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto4":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen4.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla4.getValue());
-                lblPrecio.setText(lblPrecio04.getText());
-                lblMarca.setText(lblMarca04.getText());
-                lblGenero.setText(lblGenero04.getText());
-                lblTipo.setText(lblTipo04.getText());
+                    lblTalla.setText(cmbTalla4.getValue());
+                    lblPrecio.setText(lblPrecio04.getText());
+                    lblMarca.setText(lblMarca04.getText());
+                    lblGenero.setText(lblGenero04.getText());
+                    lblTipo.setText(lblTipo04.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca04, lblTipo04, lblPrecio04, lblGenero04, cmbTalla4);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
-                break;
-            case "btnAggCrto5":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen5.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+                    //tomarValor(lblMarca04, lblTipo04, lblPrecio04, lblGenero04, cmbTalla4);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto5":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen5.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla5.getValue());
-                lblPrecio.setText(lblPrecio05.getText());
-                lblMarca.setText(lblMarca05.getText());
-                lblGenero.setText(lblGenero05.getText());
-                lblTipo.setText(lblTipo05.getText());
+                    lblTalla.setText(cmbTalla5.getValue());
+                    lblPrecio.setText(lblPrecio05.getText());
+                    lblMarca.setText(lblMarca05.getText());
+                    lblGenero.setText(lblGenero05.getText());
+                    lblTipo.setText(lblTipo05.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca05, lblTipo05, lblPrecio05, lblGenero05, cmbTalla5);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
-                break;
-            case "btnAggCrto6":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen6.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+                    //tomarValor(lblMarca05, lblTipo05, lblPrecio05, lblGenero05, cmbTalla5);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto6":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen6.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla6.getValue());
-                lblPrecio.setText(lblPrecio06.getText());
-                lblMarca.setText(lblMarca06.getText());
-                lblGenero.setText(lblGenero06.getText());
-                lblTipo.setText(lblTipo06.getText());
+                    lblTalla.setText(cmbTalla6.getValue());
+                    lblPrecio.setText(lblPrecio06.getText());
+                    lblMarca.setText(lblMarca06.getText());
+                    lblGenero.setText(lblGenero06.getText());
+                    lblTipo.setText(lblTipo06.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca06, lblTipo06, lblPrecio06, lblGenero06, cmbTalla6);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
-                break;
-            case "btnAggCrto7":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen7.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+                    //tomarValor(lblMarca06, lblTipo06, lblPrecio06, lblGenero06, cmbTalla6);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto7":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen7.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla7.getValue());
-                lblPrecio.setText(lblPrecio07.getText());
-                lblMarca.setText(lblMarca07.getText());
-                lblGenero.setText(lblGenero07.getText());
-                lblTipo.setText(lblTipo07.getText());
+                    lblTalla.setText(cmbTalla7.getValue());
+                    lblPrecio.setText(lblPrecio07.getText());
+                    lblMarca.setText(lblMarca07.getText());
+                    lblGenero.setText(lblGenero07.getText());
+                    lblTipo.setText(lblTipo07.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca07, lblTipo07, lblPrecio07, lblGenero07, cmbTalla7);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
-                break;
-            case "btnAggCrto8":
-                mini = new Image("/Images/Catalogo_Hombres/OufitMen8.png");
-                miniV = new ImageView(mini);
-                miniV.setFitHeight(40);
-                miniV.setFitWidth(30);
-                Imag.getChildren().add(miniV);
+                    //tomarValor(lblMarca07, lblTipo07, lblPrecio07, lblGenero07, cmbTalla7);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto8":
+                    mini = new Image("/Images/Catalogo_Hombres/OufitMen8.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
 
-                lblTalla.setText(cmbTalla8.getValue());
-                lblPrecio.setText(lblPrecio08.getText());
-                lblMarca.setText(lblMarca08.getText());
-                lblGenero.setText(lblGenero08.getText());
-                lblTipo.setText(lblTipo08.getText());
+                    lblTalla.setText(cmbTalla8.getValue());
+                    lblPrecio.setText(lblPrecio08.getText());
+                    lblMarca.setText(lblMarca08.getText());
+                    lblGenero.setText(lblGenero08.getText());
+                    lblTipo.setText(lblTipo08.getText());
 
-                contendElemtProductos.add(Imag, 0, 1);
-                contendElemtProductos.add(lblMarca, 0, 2);
-                contendElemtProductos.add(lblTipo, 1, 0);
-                contendElemtProductos.add(lblGenero, 2, 0);
-                contendElemtProductos.add(lblTalla, 2, 1);
-                contendElemtProductos.add(lblPrecio, 1, 1);
-                contendElemtProductos.add(btnComprar, 1, 2);
-                contendElemtProductos.add(btnEliminar, 2, 2);
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
 
-                //tomarValor(lblMarca08, lblTipo08, lblPrecio08, lblGenero08, cmbTalla8);
-                panelContenCarrito.getChildren().add(contendElemtProductos);
-                break;
+                    //tomarValor(lblMarca08, lblTipo08, lblPrecio08, lblGenero08, cmbTalla8);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
 
+            }
+        } else {
+            switch (eventBtn.getId()) {
+                case "btnAggCrto1":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman1.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla1.getValue());
+                    lblPrecio.setText(lblPrecio01.getText());
+                    lblMarca.setText(lblMarca01.getText());
+                    lblGenero.setText(lblGenero01.getText());
+                    lblTipo.setText(lblTipo01.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+
+                    break;
+                case "btnAggCrto2":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman2.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla2.getValue());
+                    lblPrecio.setText(lblPrecio02.getText());
+                    lblMarca.setText(lblMarca02.getText());
+                    lblGenero.setText(lblGenero02.getText());
+                    lblTipo.setText(lblTipo02.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca02, lblTipo02, lblPrecio02, lblGenero02, cmbTalla2);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+
+                    break;
+
+                case "btnAggCrto3":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman3.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla3.getValue());
+                    lblPrecio.setText(lblPrecio03.getText());
+                    lblMarca.setText(lblMarca03.getText());
+                    lblGenero.setText(lblGenero03.getText());
+                    lblTipo.setText(lblTipo03.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca03, lblTipo03, lblPrecio03, lblGenero03, cmbTalla3);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto4":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman4.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla4.getValue());
+                    lblPrecio.setText(lblPrecio04.getText());
+                    lblMarca.setText(lblMarca04.getText());
+                    lblGenero.setText(lblGenero04.getText());
+                    lblTipo.setText(lblTipo04.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca04, lblTipo04, lblPrecio04, lblGenero04, cmbTalla4);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto5":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman5.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla5.getValue());
+                    lblPrecio.setText(lblPrecio05.getText());
+                    lblMarca.setText(lblMarca05.getText());
+                    lblGenero.setText(lblGenero05.getText());
+                    lblTipo.setText(lblTipo05.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca05, lblTipo05, lblPrecio05, lblGenero05, cmbTalla5);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto6":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman6.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla6.getValue());
+                    lblPrecio.setText(lblPrecio06.getText());
+                    lblMarca.setText(lblMarca06.getText());
+                    lblGenero.setText(lblGenero06.getText());
+                    lblTipo.setText(lblTipo06.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca06, lblTipo06, lblPrecio06, lblGenero06, cmbTalla6);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto7":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman7.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla7.getValue());
+                    lblPrecio.setText(lblPrecio07.getText());
+                    lblMarca.setText(lblMarca07.getText());
+                    lblGenero.setText(lblGenero07.getText());
+                    lblTipo.setText(lblTipo07.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca07, lblTipo07, lblPrecio07, lblGenero07, cmbTalla7);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+                case "btnAggCrto8":
+                    mini = new Image("/Images/Catalogo_Mujeres/OufitWoman8.png");
+                    miniV = new ImageView(mini);
+                    miniV.setFitHeight(40);
+                    miniV.setFitWidth(30);
+                    Imag.getChildren().add(miniV);
+
+                    lblTalla.setText(cmbTalla8.getValue());
+                    lblPrecio.setText(lblPrecio08.getText());
+                    lblMarca.setText(lblMarca08.getText());
+                    lblGenero.setText(lblGenero08.getText());
+                    lblTipo.setText(lblTipo08.getText());
+
+                    contendElemtProductos.add(Imag, 0, 1);
+                    contendElemtProductos.add(lblMarca, 0, 2);
+                    contendElemtProductos.add(lblTipo, 1, 0);
+                    contendElemtProductos.add(lblGenero, 2, 0);
+                    contendElemtProductos.add(lblTalla, 2, 1);
+                    contendElemtProductos.add(lblPrecio, 1, 1);
+                    contendElemtProductos.add(btnComprar, 1, 2);
+                    contendElemtProductos.add(btnEliminar, 2, 2);
+
+                    //tomarValor(lblMarca08, lblTipo08, lblPrecio08, lblGenero08, cmbTalla8);
+                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    break;
+
+            }
         }
 
     }
@@ -628,83 +835,83 @@ public class Controller_View_Catalogo_Principal implements Initializable {
     private void realizarPago(ActionEvent event) {
     }
 
-    public void ponerTextoWoman(String marca, String tipo, String gender, String precio) {
-        lblGenero01.setText(gender);
-        lblGenero02.setText(gender);
-        lblGenero03.setText(gender);
-        lblGenero04.setText(gender);
-        lblGenero05.setText(gender);
-        lblGenero06.setText(gender);
-        lblGenero07.setText(gender);
-        lblGenero08.setText(gender);
-
-        lblTipo01.setText(tipo);
-        lblTipo02.setText(tipo);
-        lblTipo03.setText(tipo);
-        lblTipo04.setText(tipo);
-        lblTipo05.setText(tipo);
-        lblTipo06.setText(tipo);
-        lblTipo07.setText(tipo);
-        lblTipo08.setText(tipo);
-
-    }
-
     @FXML
     private void cambiarCatalogo(ActionEvent event) {
 
         if (event.getSource() == btnFem) {
+
+            img1.getChildren().clear();
+            img2.getChildren().clear();
+            img3.getChildren().clear();
+            img4.getChildren().clear();
+            img5.getChildren().clear();
+            img6.getChildren().clear();
+            img7.getChildren().clear();
+            img8.getChildren().clear();
+            
             paneImageMap.clear();
             paneImageMap = new HashMap<>();
-            
-//            paneImageMap.put(img1, new Image("/Images/Catalogo_Mujeres/OufitWoman1.png"));
-            lblMarca01.setText("");
+
+            paneImageMap.put(img1, new Image("/Images/Catalogo_Mujeres/OufitWoman1.png"));
+            lblMarca01.setText("PUFF GIRL");
             lblGenero01.setText("FEMENINO");
-            lblTipo01.setText("");
-            lblPrecio01.setText("");
-            
+            lblTipo01.setText("CAMISETA");
+            lblPrecio01.setText("49.254");
+
             paneImageMap.put(img2, new Image("/Images/Catalogo_Mujeres/OufitWoman2.png"));
             lblMarca02.setText("CALVIN KLEIN");
             lblGenero02.setText("FEMENINO");
             lblTipo02.setText("BUZO-BLANCO");
             lblPrecio02.setText("389.900");
-            
-//            paneImageMap.put(img3, new Image("/Images/Catalogo_Mujeres/OufitWoman7.png"));
-            lblMarca03.setText("");
+
+            paneImageMap.put(img3, new Image("/Images/Catalogo_Mujeres/OufitWoman3.png"));
+            lblMarca03.setText("GENERICO");
             lblGenero03.setText("FEMENINO");
-            lblTipo03.setText("");
-            lblPrecio03.setText("");
-            
-//            paneImageMap.put(img4, new Image("/Images/Catalogo_Mujeres/OufitWoman7.png"));
-            lblMarca04.setText("");
+            lblTipo03.setText("BUZO HOODIE");
+            lblPrecio03.setText("103.000");
+
+            paneImageMap.put(img4, new Image("/Images/Catalogo_Mujeres/OufitWoman4.png"));
+            lblMarca04.setText("GENERICO");
             lblGenero04.setText("FEMENINO");
-            lblTipo04.setText("");
-            lblPrecio04.setText("");
-            
-//            paneImageMap.put(img5, new Image("/Images/Catalogo_Mujeres/OufitWoman7.png"));
-            lblMarca05.setText("");
+            lblTipo04.setText("BUZO HOODIE");
+            lblPrecio04.setText("103.000");
+
+            paneImageMap.put(img5, new Image("/Images/Catalogo_Mujeres/OufitWoman5.png"));
+            lblMarca05.setText("SHINYINYY");
             lblGenero05.setText("FEMENINO");
-            lblTipo05.setText("");
-            lblPrecio05.setText("");
-            
-//            paneImageMap.put(img6, new Image("/Images/Catalogo_Mujeres/OufitWoman7.png"));
-            lblMarca06.setText("");
+            lblTipo05.setText("MINI FALDA");
+            lblPrecio05.setText("57.835");
+
+            paneImageMap.put(img6, new Image("/Images/Catalogo_Mujeres/OufitWoman6.png"));
+            lblMarca06.setText("ZARA");
             lblGenero06.setText("FEMENINO");
-            lblTipo06.setText("");
-            lblPrecio06.setText("");
-            
+            lblTipo06.setText("CONJUNTO");
+            lblPrecio06.setText("126.440");
+
             paneImageMap.put(img7, new Image("/Images/Catalogo_Mujeres/OufitWoman7.png"));
             lblMarca07.setText("REDANK");
             lblGenero07.setText("FEMENINO");
             lblTipo07.setText("JOGGER-SHORT");
             lblPrecio07.setText("31.500");
-            
+
             paneImageMap.put(img8, new Image("/Images/Catalogo_Mujeres/OufitWoman8.png"));
             lblMarca08.setText("MOVIES");
             lblGenero08.setText("FEMENINO");
             lblTipo08.setText("JOGGER");
             lblPrecio08.setText("94.990");
             mostrarImagenes();
+
         } else if (event.getSource() == btnMas) {
+
+            img1.getChildren().clear();
+            img2.getChildren().clear();
+            img3.getChildren().clear();
+            img4.getChildren().clear();
+            img5.getChildren().clear();
+            img6.getChildren().clear();
+            img7.getChildren().clear();
+            img8.getChildren().clear();
+            
             paneImageMap.clear();
             paneImageMap = new HashMap<>();
 
