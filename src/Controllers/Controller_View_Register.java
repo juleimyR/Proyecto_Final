@@ -11,14 +11,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-public class Controller_View_Register implements Initializable{
+public class Controller_View_Register implements Initializable {
 
     @FXML
     private TextField txtUser;
@@ -32,6 +33,8 @@ public class Controller_View_Register implements Initializable{
     private TextField txtCell;
     @FXML
     private TextField txtNom;
+    @FXML
+    public Label lblTXT;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,8 +42,18 @@ public class Controller_View_Register implements Initializable{
 
     @FXML
     private void eventAction(ActionEvent event) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        if (event.getSource() == btnCre && "ADMIN".equals(lblTXT.getText())) {
+
+            a.setContentText("Administardor registrado..!");
+        } else if (event.getSource() == btnCre && "USER".equals(lblTXT.getText())) {
+            
+            a.setContentText("Usuario registrado..!");
+        }
+        a.show();
+
     }
-    
+
     public void closeWindow1() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_LogIn_Admin.fxml"));
@@ -60,7 +73,7 @@ public class Controller_View_Register implements Initializable{
             Logger.getLogger(Controller_View_Register.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void closeWindow2() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_LogIn.fxml"));

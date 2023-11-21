@@ -65,7 +65,8 @@ public class Controller_View_LogIn_Admin implements Initializable {
                 Parent root = loader.load();
 
                 Controller_View_Register controller = loader.getController();
-
+                controller.lblTXT.setText("ADMIN");
+                
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 

@@ -34,6 +34,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import jdk.nashorn.internal.ir.BreakNode;
 
 public class Controller_View_Catalogo_Principal implements Initializable {
 
@@ -352,18 +353,21 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         panelProducto.setVisible(true);
     }
 
-    public void tomarValor(Label marca, Label tipo, Label precio, Label genero, ComboBox talla) {
-        if (talla == null) {
-
+    public boolean tomarDatosProducto(Label marca, Label tipo, Label precio, Label genero, ComboBox talla) {
+        Alert a = new Alert(Alert.AlertType.NONE);
+        if (talla.getValue() == null) {
+            a.setAlertType(Alert.AlertType.WARNING);
+            a.setContentText("Debe seleccionar una talla");
+            a.show();
+            return false;
         } else {
             String strMarca = marca.getText();
             String strTipo = tipo.getText();
             String strPrecio = precio.getText();
             String strGenero = genero.getText();
-            String strTalla = talla.getValue().toString();
-
+            //String strTalla = talla.getValue().toString();
+            return true;
         }
-
     }
 
     @FXML
@@ -424,9 +428,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
-
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto2":
                     mini = new Image("/Images/Catalogo_Hombres/OufitMen2.png");
@@ -450,9 +454,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca02, lblTipo02, lblPrecio02, lblGenero02, cmbTalla2);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
-
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
 
                 case "btnAggCrto3":
@@ -477,8 +481,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca03, lblTipo03, lblPrecio03, lblGenero03, cmbTalla3);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto4":
                     mini = new Image("/Images/Catalogo_Hombres/OufitMen4.png");
@@ -502,8 +507,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca04, lblTipo04, lblPrecio04, lblGenero04, cmbTalla4);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto5":
                     mini = new Image("/Images/Catalogo_Hombres/OufitMen5.png");
@@ -527,8 +533,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca05, lblTipo05, lblPrecio05, lblGenero05, cmbTalla5);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto6":
                     mini = new Image("/Images/Catalogo_Hombres/OufitMen6.png");
@@ -552,8 +559,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca06, lblTipo06, lblPrecio06, lblGenero06, cmbTalla6);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto7":
                     mini = new Image("/Images/Catalogo_Hombres/OufitMen7.png");
@@ -577,8 +585,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca07, lblTipo07, lblPrecio07, lblGenero07, cmbTalla7);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto8":
                     mini = new Image("/Images/Catalogo_Hombres/OufitMen8.png");
@@ -602,8 +611,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca08, lblTipo08, lblPrecio08, lblGenero08, cmbTalla8);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
 
             }
@@ -631,9 +641,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
-
+                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto2":
                     mini = new Image("/Images/Catalogo_Mujeres/OufitWoman2.png");
@@ -657,9 +667,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca02, lblTipo02, lblPrecio02, lblGenero02, cmbTalla2);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
-
+                    if (tomarDatosProducto(lblMarca02, lblTipo02, lblPrecio02, lblGenero02, cmbTalla2)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
 
                 case "btnAggCrto3":
@@ -684,8 +694,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca03, lblTipo03, lblPrecio03, lblGenero03, cmbTalla3);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca03, lblTipo03, lblPrecio03, lblGenero03, cmbTalla3)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto4":
                     mini = new Image("/Images/Catalogo_Mujeres/OufitWoman4.png");
@@ -709,8 +720,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca04, lblTipo04, lblPrecio04, lblGenero04, cmbTalla4);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca04, lblTipo04, lblPrecio04, lblGenero04, cmbTalla4)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto5":
                     mini = new Image("/Images/Catalogo_Mujeres/OufitWoman5.png");
@@ -734,8 +746,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca05, lblTipo05, lblPrecio05, lblGenero05, cmbTalla5);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca05, lblTipo05, lblPrecio05, lblGenero05, cmbTalla5)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto6":
                     mini = new Image("/Images/Catalogo_Mujeres/OufitWoman6.png");
@@ -759,8 +772,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca06, lblTipo06, lblPrecio06, lblGenero06, cmbTalla6);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca06, lblTipo06, lblPrecio06, lblGenero06, cmbTalla6)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto7":
                     mini = new Image("/Images/Catalogo_Mujeres/OufitWoman7.png");
@@ -784,8 +798,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca07, lblTipo07, lblPrecio07, lblGenero07, cmbTalla7);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca07, lblTipo07, lblPrecio07, lblGenero07, cmbTalla7)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
                 case "btnAggCrto8":
                     mini = new Image("/Images/Catalogo_Mujeres/OufitWoman8.png");
@@ -809,8 +824,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    //tomarValor(lblMarca08, lblTipo08, lblPrecio08, lblGenero08, cmbTalla8);
-                    panelContenCarrito.getChildren().add(contendElemtProductos);
+                    if (tomarDatosProducto(lblMarca08, lblTipo08, lblPrecio08, lblGenero08, cmbTalla8)) {
+                        panelContenCarrito.getChildren().add(contendElemtProductos);
+                    }
                     break;
 
             }
@@ -848,7 +864,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             img6.getChildren().clear();
             img7.getChildren().clear();
             img8.getChildren().clear();
-            
+
             paneImageMap.clear();
             paneImageMap = new HashMap<>();
 
@@ -911,7 +927,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             img6.getChildren().clear();
             img7.getChildren().clear();
             img8.getChildren().clear();
-            
+
             paneImageMap.clear();
             paneImageMap = new HashMap<>();
 
@@ -1018,14 +1034,18 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 if (response == ButtonType.YES) {
                     Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.FINISH);
                     alert2.setTitle("Información");
-                    alert2.setHeaderText("Este es un mensaje informativo");
+                    alert2.setHeaderText("Hasta la proxima..!");
                     alert2.setContentText("¡Cerrando sesión..!");
                     alert2.showAndWait();
                     Stage miStage = (Stage) this.btnCerrarS.getScene().getWindow();
                     miStage.close();
 
                 } else if (response == ButtonType.NO) {
-                    JOptionPane.showMessageDialog(null, "Está bien..!");
+                    Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.FINISH);
+                    alert2.setTitle("Información");
+                    alert2.setHeaderText("Te quedaste?!");
+                    alert2.setContentText("¡Sigue comprando...!");
+                    alert2.show();
                     alert.close();
                 }
             });
