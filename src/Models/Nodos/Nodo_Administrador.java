@@ -1,6 +1,4 @@
-package Models;
-
-import java.time.LocalDate;
+package Models.Nodos;
 
 public class Nodo_Administrador {
     
@@ -8,16 +6,14 @@ public class Nodo_Administrador {
     private String email;
     private String numCel;
     private String passwd;
-    private LocalDate fechaNac; 
     private String gen;
-    Nodo_Administrador sig, ant;
+    private Nodo_Administrador sig, ant;
     
-    public Nodo_Administrador(String nombre, String email, String numCel, String passwd, LocalDate fechaNac, String gen) {
+    public Nodo_Administrador(String nombre, String email, String numCel, String passwd, String gen) {
         this.nombre = nombre;
         this.email = email;
         this.numCel = numCel;
         this.passwd = passwd;
-        this.fechaNac = fechaNac;    
         this.gen = gen;
         this.sig = null;
         this.ant = null;
@@ -54,15 +50,7 @@ public class Nodo_Administrador {
     public void setPasswd(String passwd) {
         this.passwd = passwd;
     }
-
-    public LocalDate getFechaNac() {
-        return fechaNac;
-    }
-
-    public void setFechaNac(LocalDate fechaNac) {
-        this.fechaNac = fechaNac;
-    }
-
+    
     public String getGen() {
         return gen;
     }
@@ -70,5 +58,22 @@ public class Nodo_Administrador {
     public void setGen(String gen) {
         this.gen = gen;
     }
+
+    public Nodo_Administrador getSig() {
+        return sig;
+    }
+
+    public void setSig(Nodo_Administrador sig) {
+        this.sig = sig;
+    }
+
+    public Nodo_Administrador getAnt() {
+        return ant;
+    }
+
+    public void setAnt(Nodo_Administrador ant) {
+        this.ant = ant;
+    }
+    
     
 }

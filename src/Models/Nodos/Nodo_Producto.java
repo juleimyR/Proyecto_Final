@@ -1,4 +1,4 @@
-package Models;
+package Models.Nodos;
 
 public class Nodo_Producto {
 
