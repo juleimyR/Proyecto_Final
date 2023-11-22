@@ -67,9 +67,47 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="Link4" layoutX="26.0" layoutY="283.0" mnemonicParsing="false" onAction="#irLink" style="-fx-background-color: F6C5C5;" styleClass="link-button" stylesheets="@../Styles/Style.css">
+               <graphic>
+                  <ImageView fx:id="imaLink4" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/face1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
         </Pane>
-        <Pane layoutY="330.0" prefHeight="330.0" prefWidth="1120.0" style="-fx-background-color: B1DDF1;" />
+        <Pane layoutY="330.0" prefHeight="330.0" prefWidth="1120.0" style="-fx-background-color: B1DDF1;" stylesheets="@../Styles/Style.css">
+         <children>
+            <Button fx:id="Link1" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#irLink" style="-fx-background-color: B1DDF1;" styleClass="link-button">
+               <graphic>
+                  <ImageView fx:id="imaLink1" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/git1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="Link2" layoutX="26.0" layoutY="74.0" mnemonicParsing="false" onAction="#irLink" prefHeight="34.0" prefWidth="28.0" style="-fx-background-color: B1DDF1;" styleClass="link-button">
+               <graphic>
+                  <ImageView fx:id="imaLink2" fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/insta1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="Link3" layoutX="26.0" layoutY="141.0" mnemonicParsing="false" onAction="#irLink" prefHeight="34.0" prefWidth="28.0" style="-fx-background-color: B1DDF1;" styleClass="link-button">
+               <graphic>
+                  <ImageView fx:id="imaLink3" fitHeight="28.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/whats1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></Pane>
         <AnchorPane layoutX="91.0" layoutY="99.0" prefHeight="499.0" prefWidth="1029.0" style="-fx-background-color: FFFFFF;">
             <children>
                 <ImageView fitHeight="503.0" fitWidth="506.0" layoutX="526.0" pickOnBounds="true" preserveRatio="true">
