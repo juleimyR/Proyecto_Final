@@ -1,18 +1,27 @@
 package Controllers;
 
+import Models.EstructuraDeDatos.PilaStack_Producto;
+import Models.ModeloDeDatos;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -32,13 +41,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
-import jdk.nashorn.internal.ir.BreakNode;
+import javafx.stage.StageStyle;
 
 public class Controller_View_Catalogo_Principal implements Initializable {
 
+    private PilaStack_Producto pilaP = ModeloDeDatos.obtenerInstancia().getPilaP();
     private Map<Pane, Image> paneImageMap;
+
     @FXML
     private AnchorPane root;
     @FXML
@@ -313,6 +325,42 @@ public class Controller_View_Catalogo_Principal implements Initializable {
 
         almacenarImagen();
         mostrarImagenes();
+    }
+
+    public void ExportarFem() {
+        Stage stage = new Stage();
+        stage.setTitle("Exportar Lista");
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setInitialDirectory(new File("src"));
+
+        Button button = new Button("Select Directory");
+        button.setOnAction((ActionEvent ex) -> {
+            try {
+                File selectedDirectory = directoryChooser.showDialog(stage);
+                pilaP.ExportarCatalogoFePDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaP());
+                stage.close();
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("Archivo Guardado Exitosamente");
+                a.showAndWait();
+            } catch (Exception e) {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("No se Pudo Guardar el archivo");
+                a.showAndWait();
+                System.out.println("No se Pudo Guardar el archivo: " + e.getMessage());
+            }
+
+        });
+
+        HBox vs = new HBox(new Label("Selecciona Direccion de Carpeta: "), button);
+        vs.setAlignment(Pos.CENTER);
+        vs.setPadding(new Insets(10));
+        vs.setSpacing(10);
+
+        Scene scene = new Scene(vs);
+
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void mostrarImagenes() {
@@ -1008,6 +1056,12 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 panelContenProdPagados.setVisible(false);
                 scrollPane.setVisible(false);
             }
+        } else if (event.getSource() == btnExFem) {
+
+            ExportarFem();
+
+        } else if (event.getSource() == btnExMas) {
+
         } else if (event.getSource() == btnPerfil) {
             if (PmenuP.isVisible()) {
 
@@ -1032,13 +1086,31 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             alert.setTitle("Confirmación");
             alert.showAndWait().ifPresent((ButtonType response) -> {
                 if (response == ButtonType.YES) {
-                    Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.FINISH);
-                    alert2.setTitle("Información");
-                    alert2.setHeaderText("Hasta la proxima..!");
-                    alert2.setContentText("¡Cerrando sesión..!");
-                    alert2.showAndWait();
-                    Stage miStage = (Stage) this.btnCerrarS.getScene().getWindow();
-                    miStage.close();
+                    try {
+                        Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.FINISH);
+                        alert2.setTitle("Información");
+                        alert2.setHeaderText("Hasta la proxima..!");
+                        alert2.setContentText("¡Cerrando sesión..!");
+                        alert2.showAndWait();
+                        
+                        Stage miStage = (Stage) this.btnCerrarS.getScene().getWindow();
+                        miStage.close();
+                        
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Arranque.fxml"));
+                        
+                        Parent roott = loader.load();
+                        
+                        Scene scene = new Scene(roott);
+                        Stage stage = new Stage();
+                        
+                        stage.initModality(Modality.APPLICATION_MODAL);
+                        stage.initStyle(StageStyle.UNDECORATED);
+                        
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Controller_View_Catalogo_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 } else if (response == ButtonType.NO) {
                     Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.FINISH);

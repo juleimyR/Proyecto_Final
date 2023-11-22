@@ -65,7 +65,7 @@ public class Controller_View_LogIn implements Initializable {
 
                 Controller_View_Register controller = loader.getController();
                 controller.lblTXT.setText("USER");
-                
+
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 

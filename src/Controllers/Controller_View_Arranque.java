@@ -3,6 +3,8 @@ package Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -107,7 +109,8 @@ public class Controller_View_Arranque extends Application implements Initializab
                 controller.closeWindow();
             });
 
-            closeWindow();
+            Stage miStage = (Stage) btnSign_In.getScene().getWindow();
+            miStage.close();
 
         } else if (e.getSource() == btnLogin) {
 
@@ -127,6 +130,35 @@ public class Controller_View_Arranque extends Application implements Initializab
             stage.setOnCloseRequest((WindowEvent event) -> {
                 controller.closeWindow();
             });
+
+            Stage miStage = (Stage) btnSign_In.getScene().getWindow();
+            miStage.close();
+            
+        } else if (e.getSource() == btnSign_In) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Register.fxml"));
+                Parent root = loader.load();
+
+                Controller_View_Register controller = loader.getController();
+                controller.lblTXT.setText("USER");
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initStyle(StageStyle.UTILITY);
+                stage.setScene(scene);
+                stage.show();
+
+                stage.setOnCloseRequest((WindowEvent value) -> {
+                    controller.closeWindow3();
+                });
+
+                Stage miStage = (Stage) btnSign_In.getScene().getWindow();
+                miStage.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Controller_View_LogIn_Admin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -149,11 +181,6 @@ public class Controller_View_Arranque extends Application implements Initializab
         } else if (event.getSource() == Link4) {
             String url = "";
         }
-    }
-
-    public void closeWindow() {
-        Stage miStage = (Stage) btnSign_In.getScene().getWindow();
-        miStage.close();
     }
 
     @Override

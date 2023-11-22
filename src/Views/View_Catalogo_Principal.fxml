@@ -151,9 +151,9 @@
                             </cursor>
                         </Button>
                         <ComboBox fx:id="cmbTalla2" focusTraversable="false" layoutX="105.0" layoutY="227.0" prefWidth="150.0" promptText="Seleccione su talla" styleClass="combo-box" stylesheets="@../Styles/Style.css">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </ComboBox>
                         <Label layoutX="40.0" layoutY="231.0" text="TALLA">
                             <font>
@@ -523,9 +523,9 @@
                             </children>
                         </VBox>
                     </content>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
                 </ScrollPane>
                 <Pane fx:id="panelContenProdPagados" layoutX="675.0" layoutY="46.0" prefHeight="451.0" prefWidth="372.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3px;" visible="false" />
                 <Button fx:id="btnGen" layoutX="33.0" layoutY="10.0" mnemonicParsing="false" onAction="#actionEvent" styleClass="btnMenu" stylesheets="@../Styles/Style.css" text="GENERO" />
@@ -546,12 +546,12 @@
                 </Pane>
                 <Pane fx:id="PmenuE" layoutX="141.0" layoutY="42.0" prefHeight="69.0" prefWidth="200.0" style="-fx-background-color: #38B2AC;" visible="false">
                     <children>
-                        <Button fx:id="btnExFem" mnemonicParsing="false" onAction="#cambiarCatalogo" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CATALOGO FEMENINO">
+                        <Button fx:id="btnExFem" mnemonicParsing="false" onAction="#actionEvent" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CATALOGO FEMENINO">
                             <cursor>
                                 <Cursor fx:constant="OPEN_HAND" />
                             </cursor>
                         </Button>
-                        <Button fx:id="btnExMas" focusTraversable="false" layoutY="36.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CATALOGO MASCULINO">
+                        <Button fx:id="btnExMas" focusTraversable="false" layoutY="36.0" mnemonicParsing="false" onAction="#actionEvent" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CATALOGO MASCULINO">
                             <cursor>
                                 <Cursor fx:constant="OPEN_HAND" />
                             </cursor>
@@ -566,10 +566,10 @@
                             </image>
                         </ImageView>
                     </graphic>
-               <styleClass>
-                  <String fx:value="btnIcon" />
-                  <String fx:value="ImageView" />
-               </styleClass>
+                    <styleClass>
+                        <String fx:value="btnIcon" />
+                        <String fx:value="ImageView" />
+                    </styleClass>
                 </Button>
                 <Button fx:id="btnHistory" layoutX="960.0" layoutY="11.0" mnemonicParsing="false" onAction="#actionEvent" styleClass="btnIcon" stylesheets="@../Styles/Style.css">
                     <graphic>
@@ -598,26 +598,26 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <Label fx:id="labelUser" contentDisplay="RIGHT" layoutX="716.0" layoutY="19.0" text="NULL">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="12.0" />
-               </font>
-            </Label>
+                <Label fx:id="labelUser" contentDisplay="RIGHT" layoutX="716.0" layoutY="19.0" text="NULL">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                    </font>
+                </Label>
             </children>
         </Pane>
-      <Pane fx:id="PmenuP" layoutX="733.0" layoutY="44.0" prefHeight="69.0" prefWidth="200.0" style="-fx-background-color: #38B2AC;" visible="false">
-         <children>
-            <Button fx:id="btnCerrarS" mnemonicParsing="false" onAction="#actionEvent" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CERRAR SESIÓN">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btnCambC" focusTraversable="false" layoutY="36.0" mnemonicParsing="false" onAction="#actionEvent" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CAMBIAR CLAVE">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-         </children>
-      </Pane>
+        <Pane fx:id="PmenuP" layoutX="733.0" layoutY="44.0" prefHeight="69.0" prefWidth="200.0" style="-fx-background-color: #38B2AC;" visible="false">
+            <children>
+                <Button fx:id="btnCerrarS" mnemonicParsing="false" onAction="#actionEvent" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CERRAR SESIÓN">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="btnCambC" focusTraversable="false" layoutY="36.0" mnemonicParsing="false" onAction="#actionEvent" prefHeight="33.0" prefWidth="200.0" styleClass="styled-items" stylesheets="@../Styles/Style.css" text="CAMBIAR CLAVE">
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </Pane>
     </children>
 </AnchorPane>

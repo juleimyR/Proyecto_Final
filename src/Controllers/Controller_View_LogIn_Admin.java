@@ -44,7 +44,7 @@ public class Controller_View_LogIn_Admin implements Initializable {
 
                 Controller_View_Catalogo_Principal controller = loader.getController();
                 controller.labelUser.setText(txtUser.getText());
-                
+
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 
@@ -56,7 +56,7 @@ public class Controller_View_LogIn_Admin implements Initializable {
                 Stage miStage = (Stage) this.btnIng.getScene().getWindow();
                 miStage.close();
             } catch (IOException ex) {
-                Logger.getLogger(Controller_View_LogIn.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Controller_View_LogIn_Admin.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (event.getSource() == btnRegH) {
 
@@ -66,7 +66,7 @@ public class Controller_View_LogIn_Admin implements Initializable {
 
                 Controller_View_Register controller = loader.getController();
                 controller.lblTXT.setText("ADMIN");
-                
+
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 
@@ -108,5 +108,5 @@ public class Controller_View_LogIn_Admin implements Initializable {
             Logger.getLogger(Controller_View_LogIn_Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

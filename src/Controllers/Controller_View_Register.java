@@ -1,5 +1,7 @@
 package Controllers;
 
+import Models.EstructuraDeDatos.ListaDobleAdmin;
+import Models.ModeloDeDatos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,8 +20,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class Controller_View_Register implements Initializable {
+
+    private ListaDobleAdmin listaA = ModeloDeDatos.obtenerInstancia().getListaA();
 
     @FXML
     private TextField txtUser;
@@ -35,6 +41,8 @@ public class Controller_View_Register implements Initializable {
     private TextField txtNom;
     @FXML
     public Label lblTXT;
+    @FXML
+    private TextField txtGen;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,7 +55,7 @@ public class Controller_View_Register implements Initializable {
 
             a.setContentText("Administardor registrado..!");
         } else if (event.getSource() == btnCre && "USER".equals(lblTXT.getText())) {
-            
+
             a.setContentText("Usuario registrado..!");
         }
         a.show();
@@ -60,12 +68,18 @@ public class Controller_View_Register implements Initializable {
 
             Parent roott = loader.load();
 
+            Controller_View_LogIn_Admin controller = loader.getController();
+
             Scene scene = new Scene(roott);
             Stage stage = new Stage();
 
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.show();
+
+            stage.setOnCloseRequest((WindowEvent value) -> {
+                controller.closeWindow();
+            });
 
             Stage miStage = (Stage) this.btnCre.getScene().getWindow();
             miStage.close();
@@ -79,11 +93,38 @@ public class Controller_View_Register implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_LogIn.fxml"));
 
             Parent roott = loader.load();
+            
+            Controller_View_LogIn controller = loader.getController();
+            
+            Scene scene = new Scene(roott);
+            Stage stage = new Stage();
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.show();
+            
+            stage.setOnCloseRequest((WindowEvent value) -> {
+                controller.closeWindow();
+            });
+
+            Stage miStage = (Stage) this.btnCre.getScene().getWindow();
+            miStage.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Controller_View_Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void closeWindow3() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Arranque.fxml"));
+
+            Parent roott = loader.load();
 
             Scene scene = new Scene(roott);
             Stage stage = new Stage();
 
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(scene);
             stage.show();
 

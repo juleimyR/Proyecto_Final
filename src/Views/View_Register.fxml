@@ -23,28 +23,30 @@
             <Image url="@../Images/Inicio/Fondo!.png" />
          </image>
       </ImageView>
-      <Pane layoutX="51.0" layoutY="36.0" prefHeight="329.0" prefWidth="300.0" styleClass="panelUser" stylesheets="@../Styles/Style.css">
+      <Pane layoutX="51.0" layoutY="25.0" prefHeight="340.0" prefWidth="300.0" styleClass="panelUser" stylesheets="@../Styles/Style.css">
          <children>
-            <Label layoutX="16.0" layoutY="176.0" styleClass="labels" text="Contraseña" />
-            <Label layoutX="16.0" layoutY="224.0" styleClass="labels" text="Contraseña" />
-            <PasswordField fx:id="txtPass1" focusTraversable="false" layoutX="15.0" layoutY="241.0" prefHeight="29.0" prefWidth="268.0" promptText="***************">
+            <Label layoutX="16.0" layoutY="201.0" styleClass="labels" text="Contraseña" />
+            <Label layoutX="16.0" layoutY="247.0" styleClass="labels" text="Contraseña" />
+            <PasswordField fx:id="txtPass1" focusTraversable="false" layoutX="15.0" layoutY="263.0" prefHeight="29.0" prefWidth="268.0" promptText="***************">
                <styleClass>
                   <String fx:value="textField" />
                   <String fx:value="text" />
                </styleClass></PasswordField>
-            <PasswordField fx:id="txtPass" focusTraversable="false" layoutX="15.0" layoutY="193.0" prefHeight="29.0" prefWidth="268.0" promptText="***************" styleClass="textField" stylesheets="@../Styles/Style.css" />
-            <Button fx:id="btnCre" layoutX="50.0" layoutY="288.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="27.0" prefWidth="201.0" styleClass="btnLogin" stylesheets="@../Styles/Style.css" text="CREAR CUENTA" />
-            <Label layoutX="16.0" layoutY="126.0" styleClass="labels" text="Numero celular" />
-            <TextField fx:id="txtCell" focusTraversable="false" layoutX="15.0" layoutY="141.0" prefHeight="25.0" prefWidth="268.0" promptText="+57 000-0000-000" styleClass="textField" />
-            <Label layoutX="16.0" layoutY="80.0" styleClass="labels" text="Correo electronico" />
-            <TextField fx:id="txtUser" focusTraversable="false" layoutX="15.0" layoutY="95.0" prefHeight="25.0" prefWidth="268.0" promptText="Usuario" styleClass="textField" />
-            <Label layoutX="16.0" layoutY="29.0" styleClass="labels" text="Nombre" />
-            <TextField fx:id="txtNom" focusTraversable="false" layoutX="15.0" layoutY="44.0" prefHeight="25.0" prefWidth="268.0" promptText="nombre" styleClass="textField" />
-            <Label fx:id="lblTXT" layoutX="128.0" layoutY="14.0" text="NULL">
+            <PasswordField fx:id="txtPass" focusTraversable="false" layoutX="15.0" layoutY="218.0" prefHeight="29.0" prefWidth="268.0" promptText="***************" styleClass="textField" stylesheets="@../Styles/Style.css" />
+            <Button fx:id="btnCre" layoutX="50.0" layoutY="299.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="27.0" prefWidth="201.0" styleClass="btnLogin" stylesheets="@../Styles/Style.css" text="CREAR CUENTA" />
+            <Label layoutX="16.0" layoutY="112.0" styleClass="labels" text="Numero celular" />
+            <TextField fx:id="txtCell" focusTraversable="false" layoutX="15.0" layoutY="127.0" prefHeight="25.0" prefWidth="268.0" promptText="+57 000-0000-000" styleClass="textField" />
+            <Label layoutX="16.0" layoutY="67.0" styleClass="labels" text="Correo electronico" />
+            <TextField fx:id="txtUser" focusTraversable="false" layoutX="15.0" layoutY="82.0" prefHeight="25.0" prefWidth="268.0" promptText="Usuario" styleClass="textField" />
+            <Label layoutX="16.0" layoutY="23.0" styleClass="labels" text="Nombre" />
+            <TextField fx:id="txtNom" focusTraversable="false" layoutX="15.0" layoutY="38.0" prefHeight="25.0" prefWidth="268.0" promptText="nombre" styleClass="textField" />
+            <Label fx:id="lblTXT" layoutX="128.0" layoutY="8.0" text="NULL">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
+            <Label layoutX="16.0" layoutY="157.0" styleClass="labels" text="Genero" />
+            <TextField fx:id="txtGen" focusTraversable="false" layoutX="15.0" layoutY="172.0" prefHeight="25.0" prefWidth="268.0" promptText="MASCULINO - FEMENINO" styleClass="textField" />
          </children>
          <opaqueInsets>
             <Insets />

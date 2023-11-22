@@ -18,10 +18,14 @@ import javax.swing.JOptionPane;
 
 public class PilaStack_Producto {
 
-    public Stack<Nodo_Producto> pilaP;
+    private Stack<Nodo_Producto> pilaP;
 
     public PilaStack_Producto() {
         pilaP = new Stack<>();
+    }
+
+    public Stack<Nodo_Producto> getPilaP() {
+        return pilaP;
     }
 
     public void setPushProducto(Nodo_Producto p) {
@@ -92,6 +96,102 @@ public class PilaStack_Producto {
     }
 
     public void ExportarPilaPDF(String ubi, Stack<Nodo_Producto> pOri) throws FileNotFoundException, IOException {
+        String info = "                                      LISTADO DE COMPRAS - TABLA                          " + "\n" + "\n";
+        @SuppressWarnings("unchecked")
+        Stack<Nodo_Producto> paux = (Stack<Nodo_Producto>) pOri.clone();
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(ubi + "SIMON'S CATALOGO MASCULINO.pdf"));
+            document.open();
+
+            BaseFont bf1 = BaseFont.createFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            Font font1 = new Font(bf1, 14);
+
+            BaseFont bf2 = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            Font font2 = new Font(bf2, 12);
+
+            BaseFont bf3 = BaseFont.createFont(BaseFont.HELVETICA_BOLDOBLIQUE, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            Font font3 = new Font(bf3, 12);
+
+            PdfPTable table = new PdfPTable(5);
+
+            String[] headers = {"IdProducto", "Marca", "Tipo", "Precio", "Genero", "Talla"};
+
+            for (String header : headers) {
+                PdfPCell headerCell = new PdfPCell();
+                headerCell.setPhrase(new com.itextpdf.text.Phrase(header, font3));
+                table.addCell(headerCell);
+            }
+
+            for (Nodo_Producto producto : pOri) {
+                table.addCell(new Paragraph(String.valueOf(producto.getId()), font2));
+                table.addCell(new Paragraph(producto.getMarca(), font2));
+                table.addCell(new Paragraph(producto.getTipo(), font2));
+                table.addCell(new Paragraph(String.valueOf(producto.getPrecio()), font2));
+                table.addCell(new Paragraph(producto.getTalla(), font2));
+            }
+            Paragraph parag = new Paragraph(info, font1);
+            parag.setAlignment(Element.ALIGN_CENTER);
+            document.add(parag);
+            document.add(table);
+
+            document.close();
+            System.out.println("¡Lista exportada a PDF correctamente!");
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ExportarCatalogoMaPDF(String ubi, Stack<Nodo_Producto> pOri) throws FileNotFoundException, IOException {
+        String info = "                                      LISTADO DE COMPRAS - TABLA                          " + "\n" + "\n";
+        @SuppressWarnings("unchecked")
+        Stack<Nodo_Producto> paux = (Stack<Nodo_Producto>) pOri.clone();
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(ubi + "SIMON'S CATALOGO FEMENINO.pdf"));
+            document.open();
+
+            BaseFont bf1 = BaseFont.createFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            Font font1 = new Font(bf1, 14);
+
+            BaseFont bf2 = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            Font font2 = new Font(bf2, 12);
+
+            BaseFont bf3 = BaseFont.createFont(BaseFont.HELVETICA_BOLDOBLIQUE, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            Font font3 = new Font(bf3, 12);
+
+            PdfPTable table = new PdfPTable(5);
+
+            String[] headers = {"IdProducto", "Marca", "Tipo", "Precio", "Genero", "Talla"};
+
+            for (String header : headers) {
+                PdfPCell headerCell = new PdfPCell();
+                headerCell.setPhrase(new com.itextpdf.text.Phrase(header, font3));
+                table.addCell(headerCell);
+            }
+
+            for (Nodo_Producto producto : pOri) {
+                table.addCell(new Paragraph(String.valueOf(producto.getId()), font2));
+                table.addCell(new Paragraph(producto.getMarca(), font2));
+                table.addCell(new Paragraph(producto.getTipo(), font2));
+                table.addCell(new Paragraph(String.valueOf(producto.getPrecio()), font2));
+                table.addCell(new Paragraph(producto.getTalla(), font2));
+            }
+            Paragraph parag = new Paragraph(info, font1);
+            parag.setAlignment(Element.ALIGN_CENTER);
+            document.add(parag);
+            document.add(table);
+
+            document.close();
+            System.out.println("¡Lista exportada a PDF correctamente!");
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ExportarCatalogoFePDF(String ubi, Stack<Nodo_Producto> pOri) throws FileNotFoundException, IOException {
         String info = "                                      LISTADO DE COMPRAS - TABLA                          " + "\n" + "\n";
         @SuppressWarnings("unchecked")
         Stack<Nodo_Producto> paux = (Stack<Nodo_Producto>) pOri.clone();
