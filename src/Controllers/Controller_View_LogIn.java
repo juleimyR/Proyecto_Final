@@ -1,5 +1,8 @@
 package Controllers;
 
+import Models.EstructuraDeDatos.ListaDobleCliente;
+import Models.ModeloDeDatos;
+import Models.Nodos.Nodo_Cliente;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,16 +14,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class Controller_View_LogIn implements Initializable {
+
+    private ListaDobleCliente listaC = ModeloDeDatos.obtenerInstancia().getListaC();
 
     //TextFields
     @FXML
@@ -35,29 +40,76 @@ public class Controller_View_LogIn implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    }
 
+    public void iniciarSesion(ActionEvent event) {
+
+        if (txtUser.getText().isEmpty() && txtPass.getText().isEmpty()) {
+
+            listaC.Alert(Alert.AlertType.WARNING, "Aviso", "No se puede verificar\n"
+                    + "Los campos están vacios");
+
+        } else if (txtUser.getText().isEmpty()) {
+
+            listaC.Alert(Alert.AlertType.WARNING, "Aviso", "No se puede verificar\n"
+                    + "Debe ingresar un correo");
+
+        } else if (txtPass.getText().isEmpty()) {
+
+            listaC.Alert(Alert.AlertType.WARNING, "Aviso", "No se puede verificar\n"
+                    + "Debe ingresar una contraseña");
+
+        } else if (!txtUser.getText().isEmpty() && !txtPass.getText().isEmpty()) {
+
+            Nodo_Cliente buscar = listaC.BuscarEmail(txtUser.getText());
+
+            if (buscar != null) {
+
+                if ((buscar.getPasswd()).equals(txtPass.getText())) {
+
+                    listaC.Alert(Alert.AlertType.CONFIRMATION, "Bienvenido", "SIMON'S le da la Bienvenida..!");
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Catalogo_Usuario.fxml"));
+                        Parent root = loader.load();
+                        
+                        Controller_View_Catalogo_Usuario controller = loader.getController();
+                        controller.labelUser.setText(txtUser.getText());
+
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+
+                        stage.initStyle(StageStyle.UNDECORATED);
+                        stage.setScene(scene);
+                        stage.show();
+
+                        Stage miStage = (Stage) this.btnIng.getScene().getWindow();
+                        miStage.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Controller_View_LogIn.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    txtUser.setText("");
+                    txtPass.setText("");
+
+                } else {
+
+                    listaC.Alert(Alert.AlertType.WARNING, "Aviso", "Contraseña incorrecta");
+                    txtPass.setText("");
+                    txtPass.requestFocus();
+
+                }
+            } else {
+                listaC.Alert(Alert.AlertType.WARNING, "Aviso", "Correo no registrado o erroneo, por favor verifique");
+                txtUser.setText("");
+                txtPass.setText("");
+                txtUser.requestFocus();
+            }
+        }
     }
 
     @FXML
     private void eventAction(ActionEvent event) {
         if (event.getSource() == btnIng) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Catalogo_Usuario.fxml"));
-                Parent root = loader.load();
-
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(scene);
-                stage.show();
-
-                Stage miStage = (Stage) this.btnIng.getScene().getWindow();
-                miStage.close();
-            } catch (IOException ex) {
-                Logger.getLogger(Controller_View_LogIn.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            iniciarSesion(event);
         } else if (event.getSource() == btnRegH) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Register.fxml"));
@@ -69,8 +121,7 @@ public class Controller_View_LogIn implements Initializable {
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.initStyle(StageStyle.UTILITY);
+                stage.initStyle(StageStyle.UNIFIED);
                 stage.setScene(scene);
                 stage.show();
 
@@ -95,7 +146,6 @@ public class Controller_View_LogIn implements Initializable {
             Scene scene = new Scene(roott);
             Stage stage = new Stage();
 
-            stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
 
             stage.setScene(scene);

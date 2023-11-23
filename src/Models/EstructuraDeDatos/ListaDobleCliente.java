@@ -1,8 +1,9 @@
 package Models.EstructuraDeDatos;
 
-import Models.Nodos.Nodo_Administrador;
 import Models.Nodos.Nodo_Cliente;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -60,12 +61,28 @@ public class ListaDobleCliente {
         }
     }
 
-    public Nodo_Cliente getCrearClient(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
-        Nodo_Cliente buscar = null;
-        try {
-            buscar = BuscarEmail(txtEmail.getText());
-            if (buscar != null) {
+    public Nodo_Cliente getUltimo() {
 
+        if (cabC == null) {
+            return null;
+        } else {
+            Nodo_Cliente q = cabC;
+            while (q.getSig() != null) {
+                q = q.getSig();
+            }
+            return q;
+        }
+    }
+
+    public Nodo_Cliente getCrearClient(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
+
+        Nodo_Cliente buscar = BuscarEmail(txtEmail.getText());
+
+        try {
+
+            if (buscar != null) {
+                Alert(Alert.AlertType.WARNING, "Importante..!",
+                        "Ya existe un cliente con este correo");
                 return null;
             } else {
                 Nodo_Cliente nuevoCust = new Nodo_Cliente(txtNombre.getText(), txtEmail.getText(), txtCell.getText(), txtPassword.getText(), txtGen.getText());
@@ -85,13 +102,23 @@ public class ListaDobleCliente {
 
     }
 
-    public void addClientInicio(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
+    public void addClient(String nom, String email, String celular, String gen, String clave) {
 
-        if (this.BuscarEmail(txtEmail.getText()) != getCabC()) {
-            Alert(Alert.AlertType.ERROR, "Importante..!",
-                    "Ya existe un administrador con este correo");
-            return;
+        Nodo_Cliente ch = new Nodo_Cliente(nom, email, celular, clave, gen);
+        if (ch != null) {
+            if (cabC == null) {
+                cabC = ch;
+                nClientes++;
+            } else {
+                Nodo_Cliente ultimo = getUltimo();
+                ultimo.setSig(ch);
+                ch.setAnt(ultimo);
+                nClientes++;
+            }
         }
+    }
+
+    public void addClientInicio(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
 
         Nodo_Cliente ch = getCrearClient(txtNombre, txtEmail, txtCell, txtGen, txtPassword);
         if (ch != null) {
@@ -109,52 +136,58 @@ public class ListaDobleCliente {
         }
     }
 
-    public boolean validarCuenta(TextField txtEmail, PasswordField txtPass) {
+    public void guardarDatosEnArchivoClient(ListaDobleCliente listaC) {
 
-        Nodo_Cliente buscar = BuscarEmail(txtEmail.getText());
-        if (buscar != null) {
-            if ((buscar.getPasswd()).equals(txtPass.getText())) {
-                System.out.println("contraseña correcta");
-                Alert(Alert.AlertType.CONFIRMATION, "Bienvenido", "Simon's le da la binevenida..!");
-                return true;
-            } else {
-                System.out.println("contraseña incorrecta");
-                Alert(Alert.AlertType.ERROR, "Aviso", "Contraseña incorrecta");
-                txtPass.setText("");
-                txtPass.requestFocus();
-                return false;
-            }
-        } else {
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Client.txt";
 
-            txtEmail.setText("");
-            txtPass.setText("");
-            txtEmail.requestFocus();
-            return false;
+        Path archivo = Paths.get(direccion);
 
-        }
-    }
-
-    public void guardarDatosEnArchivoBase(ListaDobleCliente listaC) {
-        String nombre = "Archivo_Base.txt";
-        Path ubicacion = Paths.get(System.getProperty("user.dir"), nombre);
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ubicacion.toFile()))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile()))) {
             Nodo_Cliente nodoActual = listaC.getCabC();
 
             while (nodoActual != null) {
                 writer.write(nodoActual.getNombre() + ", ");
                 writer.write(nodoActual.getEmail() + ", ");
-                writer.write(nodoActual.getPasswd() + ", ");
                 writer.write(nodoActual.getNumCel() + ", ");
+                writer.write(nodoActual.getPasswd() + ", ");
                 writer.write(nodoActual.getGen());
                 writer.newLine();
 
                 nodoActual = nodoActual.getSig();
             }
 
-            System.out.println("Datos guardados correctamente en el archivo.");
+            System.out.println("Datos guardados correctamente en el archivo de clientes.");
         } catch (IOException e) {
-            System.out.println("Error al guardar los datos en el archivo: " + e.getMessage());
+            System.out.println("Error al guardar los datos en el archivo de clientes: " + e.getMessage());
+        }
+    }
+
+    public void cargarDatosDesdeArchivoClient() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Client.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
+
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+
+                String[] atributos = linea.split(", ");
+
+                String nombre = atributos[0];
+                String email = atributos[1];
+                String celular = atributos[2];
+                String clave = atributos[3];
+                String genero = atributos[4];
+
+                addClient(nombre, email, celular, genero, clave);
+            }
+
+            System.out.println("Datos cargados correctamente desde archivo de clientes.");
+        } catch (IOException e) {
+            System.out.println("Error al cargar los datos desde el archivo de clientes: " + e.getMessage());
         }
     }
 }

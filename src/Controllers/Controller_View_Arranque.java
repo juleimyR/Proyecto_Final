@@ -1,5 +1,8 @@
 package Controllers;
 
+import Models.EstructuraDeDatos.ListaDobleAdmin;
+import Models.EstructuraDeDatos.ListaDobleCliente;
+import Models.ModeloDeDatos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,12 +19,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class Controller_View_Arranque extends Application implements Initializable {
 
+    private ListaDobleAdmin listaA = ModeloDeDatos.obtenerInstancia().getListaA();
+    private ListaDobleCliente listaC = ModeloDeDatos.obtenerInstancia().getListaC();
+    
     @FXML
     private Button btnAdmin;
     @FXML
@@ -79,6 +84,8 @@ public class Controller_View_Arranque extends Application implements Initializab
         Link4.setOnMouseEntered(event -> imaLink4.setImage(imageHover4));
         Link4.setOnMouseExited(event -> imaLink4.setImage(imageNormal4));
 
+        listaA.cargarDatosDesdeArchivoAdmin();
+        listaC.cargarDatosDesdeArchivoClient();
     }
 
     @FXML
@@ -100,8 +107,7 @@ public class Controller_View_Arranque extends Application implements Initializab
             Scene scene = new Scene(root);
             Stage stage = new Stage();
 
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UTILITY);
+            stage.initStyle(StageStyle.UNIFIED);
             stage.setScene(scene);
             stage.show();
 
@@ -122,8 +128,7 @@ public class Controller_View_Arranque extends Application implements Initializab
             Scene scene = new Scene(root);
             Stage stage = new Stage();
 
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UTILITY);
+            stage.initStyle(StageStyle.UNIFIED);
             stage.setScene(scene);
             stage.show();
 
@@ -133,7 +138,7 @@ public class Controller_View_Arranque extends Application implements Initializab
 
             Stage miStage = (Stage) btnSign_In.getScene().getWindow();
             miStage.close();
-            
+
         } else if (e.getSource() == btnSign_In) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Register.fxml"));
@@ -145,8 +150,7 @@ public class Controller_View_Arranque extends Application implements Initializab
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
 
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.initStyle(StageStyle.UTILITY);
+                stage.initStyle(StageStyle.UNIFIED);
                 stage.setScene(scene);
                 stage.show();
 

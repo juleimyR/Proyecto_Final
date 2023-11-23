@@ -1,7 +1,9 @@
 package Models.EstructuraDeDatos;
 
 import Models.Nodos.Nodo_Administrador;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -11,38 +13,38 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class ListaDobleAdmin {
-    
+
     private Nodo_Administrador cabA;
     private int nAdmins;
-    
+
     public ListaDobleAdmin() {
         this.cabA = null;
         nAdmins = 0;
     }
-    
+
     public Nodo_Administrador getCabA() {
         return cabA;
     }
-    
+
     public void setCabA(Nodo_Administrador cabA) {
         this.cabA = cabA;
     }
-    
+
     public int getnAdmins() {
         return nAdmins;
     }
-    
+
     public void setnAdmins(int nAdmins) {
         this.nAdmins = nAdmins;
     }
-    
+
     public void Alert(Alert.AlertType alertType, String tit, String mj) {
         Alert a = new Alert(alertType);
         a.setTitle(tit);
         a.setContentText(mj);
         a.showAndWait();
     }
-    
+
     public Nodo_Administrador BuscarEmail(String email) {
         if (cabA == null) {
             return null;
@@ -58,13 +60,28 @@ public class ListaDobleAdmin {
             return null;
         }
     }
-    
+
+    public Nodo_Administrador getUltimo() {
+
+        if (cabA == null) {
+            return null;
+        } else {
+            Nodo_Administrador q = cabA;
+            while (q.getSig() != null) {
+                q = q.getSig();
+            }
+            return q;
+        }
+    }
+
     public Nodo_Administrador getCrearAdmin(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
-        Nodo_Administrador buscar = null;
+        
+        Nodo_Administrador buscar = BuscarEmail(txtEmail.getText());
+
         try {
-            buscar = BuscarEmail(txtEmail.getText());
             if (buscar != null) {
-                
+                Alert(Alert.AlertType.WARNING, "Importante..!",
+                        "Ya existe un administrador con este correo");
                 return null;
             } else {
                 Nodo_Administrador nuevoCust = new Nodo_Administrador(txtNombre.getText(), txtEmail.getText(), txtCell.getText(), txtPassword.getText(), txtGen.getText());
@@ -74,86 +91,102 @@ public class ListaDobleAdmin {
                 txtNombre.setText("");
                 txtEmail.setText("");
                 txtCell.setText("");
+                txtGen.setText("");
                 txtPassword.setText("");
                 return nuevoCust;
             }
-            
+
         } catch (Exception e) {
+            System.out.println("Error: " + e);
             return null;
         }
-        
+
     }
-    
-    public void addAdminInicio(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
-        
-        if (this.BuscarEmail(txtEmail.getText()) != getCabA()) {
-            Alert(Alert.AlertType.ERROR, "Importante..!",
-                    "Ya existe un administrador con este correo");
-            return;
+
+    public void addAdmin(String nom, String email, String celular, String gen, String clave) {
+
+        Nodo_Administrador ch = new Nodo_Administrador(nom, email, celular, clave, gen);
+        if (ch != null) {
+            if (cabA == null) {
+                cabA = ch;
+                nAdmins++;
+            } else {
+                Nodo_Administrador ultimo = getUltimo();
+                ultimo.setSig(ch);
+                ch.setAnt(ultimo);
+                nAdmins++;
+            }
         }
-        
+    }
+
+    public void addAdminInicio(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
+
         Nodo_Administrador ch = getCrearAdmin(txtNombre, txtEmail, txtCell, txtGen, txtPassword);
         if (ch != null) {
-            if (getCabA() == null) {
-                setCabA(ch);
+            if (cabA == null) {
+                cabA = ch;
                 nAdmins++;
-                Alert(Alert.AlertType.INFORMATION, "Aviso", "Se ha registrado");
             } else {
-                ch.setSig(getCabA());
-                getCabA().setAnt(ch);
-                setCabA(ch);
+                ch.setSig(cabA);
+                cabA.setAnt(ch);
+                cabA = ch;
                 nAdmins++;
-                Alert(Alert.AlertType.INFORMATION, "Aviso", "Se ha registrado al inicio");
             }
         }
     }
-    
-    public boolean validarCuenta(TextField txtEmail, PasswordField txtPass) {
-        
-        Nodo_Administrador buscar = BuscarEmail(txtEmail.getText());
-        if (buscar != null) {
-            if ((buscar.getPasswd()).equals(txtPass.getText())) {
-                System.out.println("contraseña correcta");
-                Alert(Alert.AlertType.CONFIRMATION, "Bienvenido", "Simon's le da la binevenida..!");
-                return true;
-            } else {
-                System.out.println("contraseña incorrecta");
-                Alert(Alert.AlertType.ERROR, "Aviso", "Contraseña incorrecta");
-                txtPass.setText("");
-                txtPass.requestFocus();
-                return false;
-            }
-        } else {
-            
-            txtEmail.setText("");
-            txtPass.setText("");
-            txtEmail.requestFocus();
-            return false;
-            
-        }
-    }
-    
-    public void guardarDatosEnArchivoBase(ListaDobleAdmin listaA) {
-        String nombre = "Archivo_Base.txt";
-        Path ubicacion = Paths.get(System.getProperty("user.dir"), nombre);
-        
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ubicacion.toFile()))) {
+
+    public void guardarDatosEnArchivoAdmin(ListaDobleAdmin listaA) {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Admin.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile()))) {
             Nodo_Administrador nodoActual = listaA.getCabA();
-            
+
             while (nodoActual != null) {
                 writer.write(nodoActual.getNombre() + ", ");
                 writer.write(nodoActual.getEmail() + ", ");
-                writer.write(nodoActual.getPasswd() + ", ");
                 writer.write(nodoActual.getNumCel() + ", ");
+                writer.write(nodoActual.getPasswd() + ", ");
                 writer.write(nodoActual.getGen());
                 writer.newLine();
-                
+
                 nodoActual = nodoActual.getSig();
             }
-            
-            System.out.println("Datos guardados correctamente en el archivo.");
+
+            System.out.println("Datos guardados correctamente en el archivo de administradores.");
         } catch (IOException e) {
-            System.out.println("Error al guardar los datos en el archivo: " + e.getMessage());
+            System.out.println("Error al guardar los datos en el archivo de administradores: " + e.getMessage());
+        }
+    }
+
+    public void cargarDatosDesdeArchivoAdmin() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Admin.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
+
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+
+                String[] atributos = linea.split(", ");
+
+                String nombre = atributos[0];
+                String email = atributos[1];
+                String celular = atributos[2];
+                String clave = atributos[3];
+                String genero = atributos[4];
+
+                addAdmin(nombre, email, celular, genero, clave);
+            }
+
+            System.out.println("Datos cargados correctamente desde archivo de administradores.");
+        } catch (IOException e) {
+            System.out.println("Error al cargar los datos desde el archivo de administradores: " + e.getMessage());
         }
     }
 }
