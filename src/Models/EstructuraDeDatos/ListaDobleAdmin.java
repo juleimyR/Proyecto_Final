@@ -75,7 +75,7 @@ public class ListaDobleAdmin {
     }
 
     public Nodo_Administrador getCrearAdmin(TextField txtNombre, TextField txtEmail, TextField txtCell, TextField txtGen, PasswordField txtPassword) {
-        
+
         Nodo_Administrador buscar = BuscarEmail(txtEmail.getText());
 
         try {
@@ -141,7 +141,7 @@ public class ListaDobleAdmin {
 
         Path archivo = Paths.get(direccion);
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile()))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile(), false))) {
             Nodo_Administrador nodoActual = listaA.getCabA();
 
             while (nodoActual != null) {

@@ -30,9 +30,9 @@
                </image>
             </ImageView>
             <Label layoutX="16.0" layoutY="156.0" styleClass="labels" text="Correo electronico" />
-            <TextField fx:id="txtUser" focusTraversable="false" layoutX="15.0" layoutY="171.0" prefHeight="25.0" prefWidth="268.0" promptText="Usuario" styleClass="textField" />
+            <TextField fx:id="txtUser" focusTraversable="false" layoutX="15.0" layoutY="171.0" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="268.0" promptText="Usuario" styleClass="textField" />
             <Label layoutX="16.0" layoutY="205.0" styleClass="labels" text="Contraseña" />
-            <PasswordField fx:id="txtPass" focusTraversable="false" layoutX="15.0" layoutY="222.0" prefHeight="29.0" prefWidth="268.0" promptText="***************" styleClass="textField" />
+            <PasswordField fx:id="txtPass" focusTraversable="false" layoutX="15.0" layoutY="222.0" onKeyTyped="#eventKey" prefHeight="29.0" prefWidth="268.0" promptText="***************" styleClass="textField" />
             <Button fx:id="btnIng" layoutX="50.0" layoutY="259.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="27.0" prefWidth="201.0" styleClass="btnLogin" stylesheets="@../Styles/Style.css" text="INGRESAR" />
             <Label layoutX="21.0" layoutY="293.0" styleClass="labels" text="¿Nuevo usuario?" />
             <Hyperlink fx:id="btnRegH" cursor="$null" focusTraversable="false" layoutX="119.0" layoutY="288.0" onAction="#eventAction" styleClass="labelR" stylesheets="@../Styles/Style.css" text="Registrese aquí" />

@@ -142,7 +142,7 @@ public class ListaDobleCliente {
 
         Path archivo = Paths.get(direccion);
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile()))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile(), false))) {
             Nodo_Cliente nodoActual = listaC.getCabC();
 
             while (nodoActual != null) {

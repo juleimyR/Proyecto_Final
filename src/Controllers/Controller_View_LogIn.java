@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -42,6 +43,35 @@ public class Controller_View_LogIn implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    @FXML
+    private void eventKey(KeyEvent event) {
+
+        Object evt = event.getSource();
+
+        if (evt.equals(txtUser)) {
+
+            if (event.getCharacter().equals(" ")) {
+                event.consume();
+            }
+
+        } else if (evt.equals(txtPass)) {
+
+            if (event.getCharacter().equals(" ")) {
+                event.consume();
+            }
+
+            if (!Character.isDigit(event.getCharacter().charAt(0))) {
+                event.consume();
+            }
+
+            if (txtPass.getText().length() > 7) {
+                event.consume();
+            }
+
+        }
+
+    }
+    
     public void iniciarSesion(ActionEvent event) {
 
         if (txtUser.getText().isEmpty() && txtPass.getText().isEmpty()) {

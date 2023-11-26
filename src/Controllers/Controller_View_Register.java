@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -50,17 +51,81 @@ public class Controller_View_Register implements Initializable {
     }
 
     @FXML
+    private void eventKey(KeyEvent event) {
+
+        Object evt = event.getSource();
+
+        if (evt.equals(txtNom)) {
+
+            if (!Character.isLetter(event.getCharacter().charAt(0)) && !event.getCharacter().equals(" ")) {
+                event.consume();
+            }
+        } else if (evt.equals(txtUser)) {
+
+            if (!Character.isLetter(event.getCharacter().charAt(0)) && event.getCharacter().equals(" ") && !event.getCharacter().equals("@") && !event.getCharacter().equals(".")) {
+                event.consume();
+            }
+
+        } else if (evt.equals(txtCell)) {
+
+            if (!Character.isDigit(event.getCharacter().charAt(0)) && !event.getCharacter().equals(" ") && !event.getCharacter().equals("+")) {
+                event.consume();
+            }
+
+        } else if (evt.equals(txtGen)) {
+
+            if (Character.isDigit(event.getCharacter().charAt(0))) {
+                event.consume();
+            }
+
+        } else if (evt.equals(txtPass)) {
+
+            if (event.getCharacter().equals(" ")) {
+                event.consume();
+            }
+
+            if (!Character.isDigit(event.getCharacter().charAt(0))) {
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setContentText("No puede ingresar caracteres\nno numericos..!");
+                event.consume();
+                a.show();
+            }
+
+            if (txtPass.getText().length() > 7) {
+                event.consume();
+            }
+
+        } else if (evt.equals(txtPass1)) {
+
+            if (event.getCharacter().equals(" ")) {
+                event.consume();
+            }
+
+            if (!Character.isDigit(event.getCharacter().charAt(0))) {
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setContentText("No puede ingresar caracteres\nno numericos..!");
+                event.consume();
+                a.show();
+            }
+
+            if (txtPass1.getText().length() > 7) {
+                event.consume();
+            }
+
+        }
+    }
+
+    @FXML
     private void eventAction(ActionEvent event) {
 
         if (event.getSource() == btnCre && "ADMIN".equals(lblTXT.getText())) {
 
             AgregarAdmins(txtNom, txtUser, txtCell, txtGen, txtPass);
-            closeWindow1();
 
         } else if (event.getSource() == btnCre && "USER".equals(lblTXT.getText())) {
-            
+
             AgregarClients(txtNom, txtUser, txtCell, txtGen, txtPass);
-            closeWindow2();
+
         }
 
     }
@@ -84,6 +149,7 @@ public class Controller_View_Register implements Initializable {
 
                                 listaA.addAdminInicio(txtNombre, txtEmail, txtCell, txtGen, txtPassword);
                                 listaA.guardarDatosEnArchivoAdmin(listaA);
+                                closeWindow1();
                                 txtNombre.setText("");
                                 txtEmail.setText("");
                                 txtCell.setText("");
@@ -142,6 +208,7 @@ public class Controller_View_Register implements Initializable {
 
                                 listaC.addClientInicio(txtNombre, txtEmail, txtCell, txtGen, txtPassword);
                                 listaC.guardarDatosEnArchivoClient(listaC);
+                                closeWindow2();
                                 txtNombre.setText("");
                                 txtEmail.setText("");
                                 txtCell.setText("");
