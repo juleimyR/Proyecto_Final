@@ -8,7 +8,7 @@ public class Nodo_Producto {
     private int id;
     private String marca;
     private String tipo;
-    private double precio;
+    private long precio;
     private String genero;
     private String talla;
     private String comprador;
@@ -26,7 +26,7 @@ public class Nodo_Producto {
         url_Imag = "";
     }
 
-    public Nodo_Producto(int id, String marca, String tipo, double precio, String genero, String talla,String url_Imag) {
+    public Nodo_Producto(int id, String marca, String tipo, long precio, String genero, String talla,String url_Imag) {
         this.id = id;
         this.marca = marca;
         this.tipo = tipo;
@@ -72,7 +72,7 @@ public class Nodo_Producto {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(long precio) {
         this.precio = precio;
     }
 
@@ -107,6 +107,5 @@ public class Nodo_Producto {
     public void setUrl_Imag(String url_Imag) {
         this.url_Imag = url_Imag;
     }
-    
     
 }
