@@ -5,40 +5,53 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Stack;
 import javax.swing.JOptionPane;
 
 public class PilaStack_Producto {
 
-    private Stack<Nodo_Producto> pilaP;
+    private Stack<Nodo_Producto> pilaPM;
+    private Stack<Nodo_Producto> pilaPF;
     private Stack<Nodo_Producto> pilaPH;
 
     public PilaStack_Producto() {
-        pilaP = new Stack<>();
+        pilaPM = new Stack<>();
+        pilaPF = new Stack<>();
         pilaPH = new Stack<>();
     }
 
-    public Stack<Nodo_Producto> getPilaP() {
-        return pilaP;
+    public Stack<Nodo_Producto> getPilaPM() {
+        return pilaPM;
+    }
+
+    public Stack<Nodo_Producto> getPilaPF() {
+        return pilaPF;
     }
 
     public Stack<Nodo_Producto> getPilaPH() {
         return pilaPH;
     }
 
+    //Metodos PilaP Masculinos
     public void setPushProducto(Nodo_Producto p) {
-        int pos = pilaP.indexOf(p);
+        int pos = pilaPM.indexOf(p);
         if (pos == -1) {
-            pilaP.push(p);
+            pilaPM.push(p);
             System.out.println("seguardó el producto");
         } else {
             System.out.println("Ya se encontraba registrado el producto");
@@ -48,8 +61,8 @@ public class PilaStack_Producto {
     public Nodo_Producto getProId(int id) {
         Nodo_Producto aux = new Nodo_Producto();
         int i = 0;
-        while (i < pilaP.size()) {
-            aux = pilaP.get(i);
+        while (i < pilaPM.size()) {
+            aux = pilaPM.get(i);
             if (aux.getId() == id) {
                 return aux;
             }
@@ -61,9 +74,9 @@ public class PilaStack_Producto {
 
     public void setPopProducId(int id) {
         Nodo_Producto aux = null;
-        if (!pilaP.empty()) {
+        if (!pilaPM.empty()) {
             aux = getProId(id);
-            if ((aux != null) && (pilaP.remove(aux))) {
+            if ((aux != null) && (pilaPM.remove(aux))) {
                 JOptionPane.showMessageDialog(null, "Producto eliminado!");
             } else {
                 JOptionPane.showMessageDialog(null, "El producto no existe!");
@@ -77,18 +90,86 @@ public class PilaStack_Producto {
         PilaStack_Producto caux = new PilaStack_Producto();
         int i;
         Nodo_Producto aux = null;
-        if (this.pilaP == null) {
+        if (this.pilaPM == null) {
             return null;
         } else {
-            for (i = 0; i < pilaP.size(); i++) {
-                aux = (Nodo_Producto) pilaP.get(i);
-                caux.pilaP.add(i, aux);
+            for (i = 0; i < pilaPM.size(); i++) {
+                aux = pilaPM.get(i);
+                caux.pilaPM.add(i, aux);
             }
             return caux;
         }
     }
 
     public void eliminar(Stack<Nodo_Producto> pila, int id) {
+        Stack<Nodo_Producto> temp = new Stack<>();
+
+        while (!pila.isEmpty()) {
+            Nodo_Producto producto = pila.pop();
+            if (producto.getId() != id) {
+                temp.push(producto);
+            }
+        }
+        while (!temp.isEmpty()) {
+            pila.push(temp.pop());
+        }
+    }
+
+    //Metodos pilaP Femeninos
+    public void setPushProducto_F(Nodo_Producto p) {
+        int pos = pilaPM.indexOf(p);
+        if (pos == -1) {
+            pilaPM.push(p);
+            System.out.println("seguardó el producto");
+        } else {
+            System.out.println("Ya se encontraba registrado el producto");
+        }
+    }
+
+    public Nodo_Producto getProId_F(int id) {
+        Nodo_Producto aux = new Nodo_Producto();
+        int i = 0;
+        while (i < pilaPM.size()) {
+            aux = pilaPM.get(i);
+            if (aux.getId() == id) {
+                return aux;
+            }
+            i++;
+        }
+        aux = null;
+        return aux;
+    }
+
+    public void setPopProducId_F(int id) {
+        Nodo_Producto aux = null;
+        if (!pilaPM.empty()) {
+            aux = getProId(id);
+            if ((aux != null) && (pilaPM.remove(aux))) {
+                JOptionPane.showMessageDialog(null, "Producto eliminado!");
+            } else {
+                JOptionPane.showMessageDialog(null, "El producto no existe!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Aun no se han registrado procutos!");
+        }
+    }
+
+    public PilaStack_Producto getClonar_F() {
+        PilaStack_Producto caux = new PilaStack_Producto();
+        int i;
+        Nodo_Producto aux = null;
+        if (this.pilaPM == null) {
+            return null;
+        } else {
+            for (i = 0; i < pilaPM.size(); i++) {
+                aux = pilaPM.get(i);
+                caux.pilaPM.add(i, aux);
+            }
+            return caux;
+        }
+    }
+
+    public void eliminar_F(Stack<Nodo_Producto> pila, int id) {
         Stack<Nodo_Producto> temp = new Stack<>();
 
         while (!pila.isEmpty()) {
@@ -149,7 +230,7 @@ public class PilaStack_Producto {
             return null;
         } else {
             for (i = 0; i < pilaPH.size(); i++) {
-                aux = (Nodo_Producto) pilaPH.get(i);
+                aux = pilaPH.get(i);
                 caux.pilaPH.add(i, aux);
             }
             return caux;
@@ -224,7 +305,7 @@ public class PilaStack_Producto {
     }
 
     public void ExportarCatalogoMaPDF(String ubi, Stack<Nodo_Producto> pOri) throws FileNotFoundException, IOException {
-        String info = "                                      LISTADO DE COMPRAS - TABLA                          " + "\n" + "\n";
+        String info = "                CATALOGO MASCULINO" + "\n" + "\n";
         @SuppressWarnings("unchecked")
         Document document = new Document();
 
@@ -241,9 +322,9 @@ public class PilaStack_Producto {
             BaseFont bf3 = BaseFont.createFont(BaseFont.HELVETICA_BOLDOBLIQUE, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
             Font font3 = new Font(bf3, 12);
 
-            PdfPTable table = new PdfPTable(5);
+            PdfPTable table = new PdfPTable(2);
 
-            String[] headers = {"IdProducto", "Marca", "Tipo", "Precio", "Genero", "Talla"};
+            String[] headers = {"Modelo", "Descripcion"};
 
             for (String header : headers) {
                 PdfPCell headerCell = new PdfPCell();
@@ -252,11 +333,28 @@ public class PilaStack_Producto {
             }
 
             for (Nodo_Producto producto : pOri) {
-                table.addCell(new Paragraph(String.valueOf(producto.getId()), font2));
-                table.addCell(new Paragraph(producto.getMarca(), font2));
-                table.addCell(new Paragraph(producto.getTipo(), font2));
-                table.addCell(new Paragraph(String.valueOf(producto.getPrecio()), font2));
-                table.addCell(new Paragraph(producto.getTalla(), font2));
+                String descripcion = "\n\nMaraca: " + producto.getMarca() + "\n\n"
+                        + "Tipo: " + producto.getTipo() + "\n\n"
+                        + "Precio: " + String.valueOf(producto.getPrecio()) + "\n\n"
+                        + "Tallas: " + producto.getTalla();
+
+                PdfPCell celda = new PdfPCell();
+
+                String imagePath = producto.getUrl_Imag();
+                File imageFile = new File(imagePath);
+
+                if (imageFile.exists()) {
+                    try {
+                        Image imagen = Image.getInstance(imagePath);
+                        celda.addElement(imagen);
+                        table.addCell(celda);
+                    } catch (IOException | DocumentException e) {
+                    }
+                } else {
+                    System.out.println("La ruta de la imagen no existe: " + imagePath);
+                }
+
+                table.addCell(new Paragraph(descripcion, font2));
             }
             Paragraph parag = new Paragraph(info, font1);
             parag.setAlignment(Element.ALIGN_CENTER);
@@ -267,6 +365,43 @@ public class PilaStack_Producto {
             System.out.println("¡Lista exportada a PDF correctamente!");
         } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void cargarProductos_MaDesdeArchivo() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Productos_M.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
+
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+
+                String[] atributos = linea.split(", ");
+
+                String url = atributos[0];
+                String marca = atributos[1];
+                String tipo = atributos[2];
+                double precio = Double.parseDouble(atributos[3]);
+                String genero = atributos[4];
+
+                Nodo_Producto producto = new Nodo_Producto();
+                producto.setUrl_Imag(url);
+                producto.setMarca(marca);
+                producto.setTipo(tipo);
+                producto.setPrecio((long) precio);
+                producto.setGenero(genero);
+                producto.setTalla("XS, S, M, L, XL");
+
+                setPushProducto(producto);
+            }
+
+            System.out.println("Datos cargados correctamente desde archivo de productos M.");
+        } catch (IOException e) {
+            System.out.println("Error al cargar los datos desde el archivo de clientes: " + e.getMessage());
         }
     }
 
