@@ -7,26 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="340.0" prefWidth="700.0" style="-fx-background-color: F6C5C5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller_View_Historial">
+<AnchorPane id="AnchorPane" prefHeight="340.0" prefWidth="840.0" style="-fx-background-color: F6C5C5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller_View_Historial">
     <stylesheets>
         <URL value="@/Styles/Style.css" />
     </stylesheets>
     <children>
-        <Pane layoutY="4.0" prefHeight="42.0" prefWidth="700.0" styleClass="panelView" stylesheets="@../Styles/Style.css">
+        <Pane layoutY="4.0" prefHeight="42.0" prefWidth="840.0" styleClass="panelView" stylesheets="@../Styles/Style.css">
             <children>
-                <Button fx:id="btnEliminH" layoutX="10.0" layoutY="6.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="32.0" prefWidth="124.0" styleClass="Buttons" stylesheets="@../Styles/Style.css" text="Eliminar Historial" />
-                <Button fx:id="btnExpH" layoutX="150.0" layoutY="6.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="32.0" prefWidth="124.0" styleClass="Buttons" stylesheets="@../Styles/Style.css" text="Exportar Historial" />
+                <Button fx:id="btnEliminH" layoutX="6.0" layoutY="6.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="32.0" prefWidth="124.0" styleClass="Buttons" stylesheets="@../Styles/Style.css" text="Eliminar Historial" />
+                <Button fx:id="btnExpH" layoutX="148.0" layoutY="6.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="32.0" prefWidth="124.0" styleClass="Buttons" stylesheets="@../Styles/Style.css" text="Exportar Historial" />
+              <Button fx:id="btnCerrar" layoutX="753.0" layoutY="2.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="35.0" prefWidth="81.0" styleClass="back-button" stylesheets="@../Styles/Style.css" text="Cerrar" />
             </children>
         </Pane>
-        <TableView focusTraversable="false" layoutX="11.0" layoutY="64.0" prefHeight="219.0" prefWidth="680.0" stylesheets="@../Styles/Style.css">
+        <TableView fx:id="tableHistory" focusTraversable="false" layoutX="5.0" layoutY="61.0" prefHeight="270.0" prefWidth="830.0" stylesheets="@../Styles/Style.css">
             <columns>
-                <TableColumn prefWidth="101.0" text="ID Producto" />
-                <TableColumn prefWidth="125.0" text="Marca" />
-                <TableColumn prefWidth="116.0" text="Tipo" />
-                <TableColumn prefWidth="113.0" text="Precio" />
-                <TableColumn prefWidth="219.0" text="Comprador" />
+                <TableColumn fx:id="col1" prefWidth="100.0" text="ID Producto" />
+                <TableColumn fx:id="col2" prefWidth="119.0" text="Marca" />
+                <TableColumn fx:id="col3" prefWidth="119.0" text="Tipo" />
+                <TableColumn fx:id="col4" prefWidth="91.0" text="Precio" />
+                <TableColumn fx:id="col5" prefWidth="192.0" text="Comprador" />
+            <TableColumn fx:id="col6" prefWidth="206.0" text="Fecha Compra" />
             </columns>
         </TableView>
-        <Button fx:id="btnCerrar" layoutX="609.0" layoutY="297.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="35.0" prefWidth="81.0" styleClass="back-button" stylesheets="@../Styles/Style.css" text="Cerrar" />
     </children>
 </AnchorPane>
