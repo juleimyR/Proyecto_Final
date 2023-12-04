@@ -2,9 +2,14 @@ package Controllers;
 
 import Models.EstructuraDeDatos.PilaStack_Producto;
 import Models.ModeloDeDatos;
+import Models.Nodos.Nodo_Producto;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -49,6 +54,7 @@ import javafx.stage.StageStyle;
 public class Controller_View_Catalogo_Principal implements Initializable {
 
     private PilaStack_Producto pilaP = ModeloDeDatos.obtenerInstancia().getPilaP();
+    private PilaStack_Producto pilaPH = ModeloDeDatos.obtenerInstancia().getPilaP();
     private Map<Pane, Image> paneImageMap;
 
     @FXML
@@ -329,7 +335,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
 
     public void ExportarFem() {
         Stage stage = new Stage();
-        stage.setTitle("Exportar Lista");
+        stage.setTitle("Exportar Catalogo F");
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(new File("src"));
@@ -339,6 +345,42 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             try {
                 File selectedDirectory = directoryChooser.showDialog(stage);
                 pilaP.ExportarCatalogoFePDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaP());
+                stage.close();
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("Archivo Guardado Exitosamente");
+                a.showAndWait();
+            } catch (Exception e) {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("No se Pudo Guardar el archivo");
+                a.showAndWait();
+                System.out.println("No se Pudo Guardar el archivo: " + e.getMessage());
+            }
+
+        });
+
+        HBox vs = new HBox(new Label("Selecciona Direccion de Carpeta: "), button);
+        vs.setAlignment(Pos.CENTER);
+        vs.setPadding(new Insets(10));
+        vs.setSpacing(10);
+
+        Scene scene = new Scene(vs);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void ExportarMasc() {
+        Stage stage = new Stage();
+        stage.setTitle("Exportar Catalogo M");
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setInitialDirectory(new File("src"));
+
+        Button button = new Button("Select Directory");
+        button.setOnAction((ActionEvent ex) -> {
+            try {
+                File selectedDirectory = directoryChooser.showDialog(stage);
+                pilaP.ExportarCatalogoMaPDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaP());
                 stage.close();
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Archivo Guardado Exitosamente");
@@ -418,6 +460,15 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         }
     }
 
+    private Node getNodeFromGridPane(GridPane gridPane, int rowIndex, int colIndex) {
+        for (Node node : gridPane.getChildren()) {
+            if (GridPane.getRowIndex(node) == rowIndex && GridPane.getColumnIndex(node) == colIndex) {
+                return node;
+            }
+        }
+        return null;
+    }
+
     @FXML
     private void aggCarrito(ActionEvent event) {
         Button eventBtn = (Button) event.getSource();
@@ -448,6 +499,55 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             public void handle(ActionEvent event) {
                 System.out.println("Botón clickeado");
                 System.out.println(btnEliminar.getId());
+                panelContenCarrito.getChildren().remove(contendElemtProductos);
+            }
+        });
+
+        btnComprar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Botón clickeado");
+                System.out.println(btnComprar.getId());
+
+                Nodo_Producto producto = new Nodo_Producto();
+
+                Node marcaProducto = getNodeFromGridPane(contendElemtProductos, 2, 0);
+                Node tipoProducto = getNodeFromGridPane(contendElemtProductos, 0, 1);
+                Node precioProducto = getNodeFromGridPane(contendElemtProductos, 1, 1);
+
+                int id = 0;
+                do {
+                    id = (int) Math.floor(Math.random() * (5000 - 10 + 1) + 10);
+                } while (pilaPH.getProId_H(id) != null);
+
+                Integer idP = id;
+
+                Label marcaLabel = (Label) marcaProducto;
+                String marca = marcaLabel.getText();
+
+                Label tipoLabel = (Label) tipoProducto;
+                String tipo = tipoLabel.getText();
+
+                Label precioLabel = (Label) precioProducto;
+                DecimalFormat formatoDecimal = new DecimalFormat("#.00");
+                double precio = 0;
+                try {
+                    precio = formatoDecimal.parse(precioLabel.getText()).doubleValue();
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controller_View_Catalogo_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                String comprador = labelUser.getText();
+
+                LocalDateTime fechaHoraActual = LocalDateTime.now();
+                producto.setFechaCompra(fechaHoraActual);
+                producto.setId(idP);
+                producto.setMarca(marca);
+                producto.setTipo(tipo);
+                producto.setPrecio(precio);
+                producto.setComprador(comprador);
+
+                pilaPH.setPushProducto_H(producto);
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
             }
         });
@@ -1062,7 +1162,23 @@ public class Controller_View_Catalogo_Principal implements Initializable {
 
         } else if (event.getSource() == btnExMas) {
 
-            
+            ExportarMasc();
+
+        } else if (event.getSource() == btnHistory) {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Historial.fxml"));
+
+            Parent roott = loader.load();
+
+            Scene scene = new Scene(roott);
+            Stage stage = new Stage();
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+
+            stage.setScene(scene);
+            stage.show();
+
         } else if (event.getSource() == btnPerfil) {
             if (PmenuP.isVisible()) {
 
@@ -1093,20 +1209,20 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                         alert2.setHeaderText("Hasta la proxima..!");
                         alert2.setContentText("¡Cerrando sesión..!");
                         alert2.showAndWait();
-                        
+
                         Stage miStage = (Stage) this.btnCerrarS.getScene().getWindow();
                         miStage.close();
-                        
+
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Arranque.fxml"));
-                        
+
                         Parent roott = loader.load();
-                        
+
                         Scene scene = new Scene(roott);
                         Stage stage = new Stage();
-                        
+
                         stage.initModality(Modality.APPLICATION_MODAL);
                         stage.initStyle(StageStyle.UNDECORATED);
-                        
+
                         stage.setScene(scene);
                         stage.show();
                     } catch (IOException ex) {
