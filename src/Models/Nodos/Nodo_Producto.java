@@ -1,22 +1,28 @@
 package Models.Nodos;
 
+import java.time.LocalDateTime;
+
 public class Nodo_Producto {
 
+    private LocalDateTime fechaCompra;
     private int id;
     private String marca;
     private String tipo;
     private double precio;
     private String genero;
     private String talla;
+    private String comprador;
     private String url_Imag;
 
     public Nodo_Producto() {
+        fechaCompra = null;
         id = 0;
         marca = "";
         tipo = "";
         precio = 0;
         genero = "";
         talla = "";
+        comprador = "";
         url_Imag = "";
     }
 
@@ -28,6 +34,14 @@ public class Nodo_Producto {
         this.genero = genero;
         this.talla = talla;
         this.url_Imag = url_Imag;
+    }
+
+    public LocalDateTime getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(LocalDateTime fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
 
     public int getId() {
@@ -76,6 +90,14 @@ public class Nodo_Producto {
 
     public void setTalla(String talla) {
         this.talla = talla;
+    }
+
+    public String getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(String comprador) {
+        this.comprador = comprador;
     }
 
     public String getUrl_Imag() {
