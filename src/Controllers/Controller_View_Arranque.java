@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.EstructuraDeDatos.ListaDobleAdmin;
 import Models.EstructuraDeDatos.ListaDobleCliente;
+import Models.EstructuraDeDatos.PilaStack_Producto;
 import Models.ModeloDeDatos;
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,7 @@ public class Controller_View_Arranque extends Application implements Initializab
 
     private ListaDobleAdmin listaA = ModeloDeDatos.obtenerInstancia().getListaA();
     private ListaDobleCliente listaC = ModeloDeDatos.obtenerInstancia().getListaC();
+    private PilaStack_Producto pilaP = ModeloDeDatos.obtenerInstancia().getPilaP();
 
     @FXML
     private Button btnAdmin;
@@ -86,6 +88,7 @@ public class Controller_View_Arranque extends Application implements Initializab
 
         listaA.cargarDatosDesdeArchivoAdmin();
         listaC.cargarDatosDesdeArchivoClient();
+        pilaP.cargarProductos_MaDesdeArchivo();
     }
 
     @FXML

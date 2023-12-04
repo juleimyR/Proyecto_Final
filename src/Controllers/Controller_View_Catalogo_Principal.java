@@ -344,7 +344,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         button.setOnAction((ActionEvent ex) -> {
             try {
                 File selectedDirectory = directoryChooser.showDialog(stage);
-                pilaP.ExportarCatalogoFePDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaP());
+                pilaP.ExportarCatalogoFePDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaPM());
                 stage.close();
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Archivo Guardado Exitosamente");
@@ -371,7 +371,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
 
     public void ExportarMasc() {
         Stage stage = new Stage();
-        stage.setTitle("Exportar Catalogo M");
+        stage.setTitle("Exportar Catalogo Masculino");
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(new File("src"));
@@ -380,7 +380,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         button.setOnAction((ActionEvent ex) -> {
             try {
                 File selectedDirectory = directoryChooser.showDialog(stage);
-                pilaP.ExportarCatalogoMaPDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaP());
+                pilaP.ExportarCatalogoMaPDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaPM());
                 stage.close();
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Archivo Guardado Exitosamente");
@@ -530,9 +530,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
 
                 Label precioLabel = (Label) precioProducto;
                 DecimalFormat formatoDecimal = new DecimalFormat("#.00");
-                double precio = 0;
+                long precio = 0;
                 try {
-                    precio = formatoDecimal.parse(precioLabel.getText()).doubleValue();
+                    precio = formatoDecimal.parse(precioLabel.getText()).longValue();
                 } catch (ParseException ex) {
                     Logger.getLogger(Controller_View_Catalogo_Principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1085,7 +1085,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             lblTipo01.setText("CAMISETA");
             lblPrecio01.setText("103.900");
 
-            paneImageMap.put(img2, new Image("/Images/Catalogo_Hombres/OufitMen2.png"));
+                paneImageMap.put(img2, new Image("/Images/Catalogo_Hombres/OufitMen2.png"));
             lblMarca02.setText("NIKE");
             lblGenero02.setText("MASCULINO");
             lblTipo02.setText("CAMISETA");
