@@ -35,6 +35,10 @@
     -fx-opacity-: 0.10;
 }
 
+.Buttons:pressed{
+    -fx-cursor: closed-hand;
+}
+
 .link-button:hover{
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -283,3 +287,27 @@
 }
 /*Style View_Catalogo_Principal*/
 
+/*Style View_Historial*/
+
+.fondoI{
+    background-color: #CFA5B4;
+}
+.table-view{
+    -fx-background-image: url('../Images/Inicio/Logo.png');
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
+.table-column{
+
+    -fx-background-color: #CFA5B4;
+    -fx-border-width: 1;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10 10 0 0;
+    -fx-padding: 5;
+    -fx-font: sans-serif, bold;
+    -fx-font-size: 15;
+    -fx-text-fill: #000000;
+}
+
+/*Style View_Historial*/
