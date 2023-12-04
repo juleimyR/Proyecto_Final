@@ -26,7 +26,7 @@ public class Controller_View_Arranque extends Application implements Initializab
 
     private ListaDobleAdmin listaA = ModeloDeDatos.obtenerInstancia().getListaA();
     private ListaDobleCliente listaC = ModeloDeDatos.obtenerInstancia().getListaC();
-    
+
     @FXML
     private Button btnAdmin;
     @FXML

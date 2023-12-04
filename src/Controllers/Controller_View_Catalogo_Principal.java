@@ -1062,6 +1062,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
 
         } else if (event.getSource() == btnExMas) {
 
+            
         } else if (event.getSource() == btnPerfil) {
             if (PmenuP.isVisible()) {
 
