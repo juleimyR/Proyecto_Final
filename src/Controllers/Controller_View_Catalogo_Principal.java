@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -344,12 +343,12 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         button.setOnAction((ActionEvent ex) -> {
             try {
                 File selectedDirectory = directoryChooser.showDialog(stage);
-                pilaP.ExportarCatalogoFePDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaPM());
+                pilaP.ExportarCatalogoFePDF(selectedDirectory.getAbsolutePath() + "\\", pilaP.getPilaPF());
                 stage.close();
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Archivo Guardado Exitosamente");
                 a.showAndWait();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 Alert a = new Alert(Alert.AlertType.ERROR);
                 a.setContentText("No se Pudo Guardar el archivo");
                 a.showAndWait();
@@ -385,7 +384,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Archivo Guardado Exitosamente");
                 a.showAndWait();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 Alert a = new Alert(Alert.AlertType.ERROR);
                 a.setContentText("No se Pudo Guardar el archivo");
                 a.showAndWait();
@@ -1020,49 +1019,49 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             lblMarca01.setText("PUFF GIRL");
             lblGenero01.setText("FEMENINO");
             lblTipo01.setText("CAMISETA");
-            lblPrecio01.setText("49.254");
+            lblPrecio01.setText("49254");
 
             paneImageMap.put(img2, new Image("/Images/Catalogo_Mujeres/OufitWoman2.png"));
             lblMarca02.setText("CALVIN KLEIN");
             lblGenero02.setText("FEMENINO");
             lblTipo02.setText("BUZO-BLANCO");
-            lblPrecio02.setText("389.900");
+            lblPrecio02.setText("389900");
 
             paneImageMap.put(img3, new Image("/Images/Catalogo_Mujeres/OufitWoman3.png"));
             lblMarca03.setText("GENERICO");
             lblGenero03.setText("FEMENINO");
             lblTipo03.setText("BUZO HOODIE");
-            lblPrecio03.setText("103.000");
+            lblPrecio03.setText("103000");
 
             paneImageMap.put(img4, new Image("/Images/Catalogo_Mujeres/OufitWoman4.png"));
             lblMarca04.setText("GENERICO");
             lblGenero04.setText("FEMENINO");
             lblTipo04.setText("BUZO HOODIE");
-            lblPrecio04.setText("103.000");
+            lblPrecio04.setText("103000");
 
             paneImageMap.put(img5, new Image("/Images/Catalogo_Mujeres/OufitWoman5.png"));
             lblMarca05.setText("SHINYINYY");
             lblGenero05.setText("FEMENINO");
             lblTipo05.setText("MINI FALDA");
-            lblPrecio05.setText("57.835");
+            lblPrecio05.setText("57835");
 
             paneImageMap.put(img6, new Image("/Images/Catalogo_Mujeres/OufitWoman6.png"));
             lblMarca06.setText("ZARA");
             lblGenero06.setText("FEMENINO");
             lblTipo06.setText("CONJUNTO");
-            lblPrecio06.setText("126.440");
+            lblPrecio06.setText("126440");
 
             paneImageMap.put(img7, new Image("/Images/Catalogo_Mujeres/OufitWoman7.png"));
             lblMarca07.setText("REDANK");
             lblGenero07.setText("FEMENINO");
             lblTipo07.setText("JOGGER-SHORT");
-            lblPrecio07.setText("31.500");
+            lblPrecio07.setText("31500");
 
             paneImageMap.put(img8, new Image("/Images/Catalogo_Mujeres/OufitWoman8.png"));
             lblMarca08.setText("MOVIES");
             lblGenero08.setText("FEMENINO");
             lblTipo08.setText("JOGGER");
-            lblPrecio08.setText("94.990");
+            lblPrecio08.setText("94990");
             mostrarImagenes();
 
         } else if (event.getSource() == btnMas) {
@@ -1083,49 +1082,49 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             lblMarca01.setText("NIKE");
             lblGenero01.setText("MASCULINO");
             lblTipo01.setText("CAMISETA");
-            lblPrecio01.setText("103.900");
+            lblPrecio01.setText("103900");
 
-                paneImageMap.put(img2, new Image("/Images/Catalogo_Hombres/OufitMen2.png"));
+            paneImageMap.put(img2, new Image("/Images/Catalogo_Hombres/OufitMen2.png"));
             lblMarca02.setText("NIKE");
             lblGenero02.setText("MASCULINO");
             lblTipo02.setText("CAMISETA");
-            lblPrecio02.setText("117.900");
+            lblPrecio02.setText("117900");
 
             paneImageMap.put(img3, new Image("/Images/Catalogo_Hombres/OufitMen3.png"));
             lblMarca03.setText("NIKE");
             lblGenero03.setText("MASCULINO");
             lblTipo03.setText("CAMISETA");
-            lblPrecio03.setText("130.900");
+            lblPrecio03.setText("130900");
 
             paneImageMap.put(img4, new Image("/Images/Catalogo_Hombres/OufitMen4.png"));
             lblMarca04.setText("NIKE");
             lblGenero04.setText("MASCULINO");
             lblTipo04.setText("BUZO");
-            lblPrecio04.setText("237.900");
+            lblPrecio04.setText("237900");
 
             paneImageMap.put(img5, new Image("/Images/Catalogo_Hombres/OufitMen5.png"));
             lblMarca05.setText("MOVIES");
             lblGenero05.setText("MASCULINO");
             lblTipo05.setText("JOGGER-BEIGE");
-            lblPrecio05.setText("79.995");
+            lblPrecio05.setText("79995");
 
             paneImageMap.put(img6, new Image("/Images/Catalogo_Hombres/OufitMen6.png"));
             lblMarca06.setText("MOVIES");
             lblGenero06.setText("MASCULINO");
             lblTipo06.setText("JOGGER-GRIS");
-            lblPrecio06.setText("74.995");
+            lblPrecio06.setText("74995");
 
             paneImageMap.put(img7, new Image("/Images/Catalogo_Hombres/OufitMen7.png"));
             lblMarca07.setText("HA");
             lblGenero07.setText("MASCULINO");
             lblTipo07.setText("JOGGER-NEGRO");
-            lblPrecio07.setText("129.900");
+            lblPrecio07.setText("129900");
 
             paneImageMap.put(img8, new Image("/Images/Catalogo_Hombres/OufitMen8.png"));
             lblMarca07.setText("HA");
             lblGenero07.setText("MASCULINO");
             lblTipo07.setText("JOGGER");
-            lblPrecio07.setText("94.900");
+            lblPrecio07.setText("94900");
             mostrarImagenes();
         }
 
