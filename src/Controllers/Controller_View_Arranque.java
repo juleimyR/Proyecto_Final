@@ -89,6 +89,7 @@ public class Controller_View_Arranque extends Application implements Initializab
         listaA.cargarDatosDesdeArchivoAdmin();
         listaC.cargarDatosDesdeArchivoClient();
         pilaP.cargarProductos_MaDesdeArchivo();
+        pilaP.cargarProductos_FeDesdeArchivo();
     }
 
     @FXML
@@ -182,11 +183,19 @@ public class Controller_View_Arranque extends Application implements Initializab
             getHostServices().showDocument(url);
 
         } else if (event.getSource() == Link2) {
-            String url = "";
+            
+            String url = "https://instagram.com/juleimyracero?igshid=OGQ5ZDc2ODk2ZA==";
+            getHostServices().showDocument(url);
+            
         } else if (event.getSource() == Link3) {
-            String url = "";
+            
+            String url = "https://w.app/Af5Lzm";
+            getHostServices().showDocument(url);
+            
         } else if (event.getSource() == Link4) {
+         
             String url = "";
+            
         }
     }
 
