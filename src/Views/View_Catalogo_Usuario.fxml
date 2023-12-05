@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1120.0" styleClass="mainFxmlClass" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="Controllers.Controller_View_Catalogo_Usuario">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1120.0" styleClass="mainFxmlClass" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller_View_Catalogo_Usuario">
     <stylesheets>
         <URL value="@/Styles/Style.css" />
     </stylesheets>
@@ -83,7 +83,7 @@
                         </Label>
                         <Label fx:id="lblMarca01" layoutX="67.0" layoutY="183.0" text="NIKE" />
                         <Label fx:id="lblTipo01" layoutX="159.0" layoutY="182.0" text="CAMISETA" />
-                        <Label fx:id="lblPrecio01" layoutX="67.0" layoutY="207.0" text="103.900" />
+                        <Label fx:id="lblPrecio01" layoutX="67.0" layoutY="207.0" text="103900" />
                         <Label fx:id="lblGenero01" layoutX="179.0" layoutY="205.0" text="MASCULINO" />
                     </children>
                 </Pane>
@@ -134,7 +134,7 @@
                         </Label>
                         <Label fx:id="lblMarca05" layoutX="69.0" layoutY="182.0" text="MOVIES" />
                         <Label fx:id="lblTipo05" layoutX="161.0" layoutY="183.0" text="JOGGER-BEIGE" />
-                        <Label fx:id="lblPrecio05" layoutX="69.0" layoutY="206.0" text="79.995" />
+                        <Label fx:id="lblPrecio05" layoutX="69.0" layoutY="206.0" text="79995" />
                         <Label fx:id="lblGenero05" layoutX="181.0" layoutY="207.0" text="MASCULINO" />
                     </children>
                 </Pane>
@@ -185,7 +185,7 @@
                         </Label>
                         <Label fx:id="lblMarca02" layoutX="73.0" layoutY="183.0" text="NIKE" />
                         <Label fx:id="lblTipo02" layoutX="167.0" layoutY="184.0" text="CAMISETA" />
-                        <Label fx:id="lblPrecio02" layoutX="73.0" layoutY="207.0" text="117.900" />
+                        <Label fx:id="lblPrecio02" layoutX="73.0" layoutY="207.0" text="117900" />
                         <Label fx:id="lblGenero02" layoutX="187.0" layoutY="208.0" text="MASCULINO" />
                     </children>
                 </Pane>
@@ -236,7 +236,7 @@
                         </Label>
                         <Label fx:id="lblMarca03" layoutX="71.0" layoutY="181.0" text="NIKE" />
                         <Label fx:id="lblTipo03" layoutX="168.0" layoutY="182.0" text="CAMISETA" />
-                        <Label fx:id="lblPrecio03" layoutX="71.0" layoutY="205.0" text="130.900" />
+                        <Label fx:id="lblPrecio03" layoutX="71.0" layoutY="205.0" text="130900" />
                         <Label fx:id="lblGenero03" layoutX="188.0" layoutY="206.0" text="MASCULINO" />
                     </children>
                 </Pane>
@@ -287,7 +287,7 @@
                         </Label>
                         <Label fx:id="lblMarca04" layoutX="72.0" layoutY="183.0" text="NIKE" />
                         <Label fx:id="lblTipo04" layoutX="164.0" layoutY="184.0" text="BUZO" />
-                        <Label fx:id="lblPrecio04" layoutX="72.0" layoutY="207.0" text="237.900" />
+                        <Label fx:id="lblPrecio04" layoutX="72.0" layoutY="207.0" text="237900" />
                         <Label fx:id="lblGenero04" layoutX="184.0" layoutY="208.0" text="MASCULINO" />
                     </children>
                 </Pane>
@@ -338,7 +338,7 @@
                         </Label>
                         <Label fx:id="lblMarca06" layoutX="70.0" layoutY="182.0" text="MOVIES" />
                         <Label fx:id="lblTipo06" layoutX="162.0" layoutY="183.0" text="JOGGER-GRIS" />
-                        <Label fx:id="lblPrecio06" layoutX="70.0" layoutY="206.0" text="74.995" />
+                        <Label fx:id="lblPrecio06" layoutX="70.0" layoutY="206.0" text="74995" />
                         <Label fx:id="lblGenero06" layoutX="182.0" layoutY="207.0" text="MASCULINO" />
                     </children>
                 </Pane>
@@ -389,7 +389,7 @@
                         </Label>
                         <Label fx:id="lblMarca07" layoutX="69.0" layoutY="181.0" text="HA" />
                         <Label fx:id="lblTipo07" layoutX="161.0" layoutY="182.0" text="JOGGER-NEGRO" />
-                        <Label fx:id="lblPrecio07" layoutX="69.0" layoutY="205.0" text="129.900" />
+                        <Label fx:id="lblPrecio07" layoutX="69.0" layoutY="205.0" text="129900" />
                         <Label fx:id="lblGenero07" layoutX="181.0" layoutY="206.0" text="MASCULINO" />
                     </children>
                 </Pane>
@@ -440,7 +440,7 @@
                         </Label>
                         <Label fx:id="lblMarca08" layoutX="69.0" layoutY="182.0" text="HA" />
                         <Label fx:id="lblTipo08" layoutX="161.0" layoutY="183.0" text="JOGGER" />
-                        <Label fx:id="lblPrecio08" layoutX="69.0" layoutY="206.0" text="94.900" />
+                        <Label fx:id="lblPrecio08" layoutX="69.0" layoutY="206.0" text="94900" />
                         <Label fx:id="lblGenero08" layoutX="181.0" layoutY="207.0" text="MASCULINO" />
                     </children>
                 </Pane>
