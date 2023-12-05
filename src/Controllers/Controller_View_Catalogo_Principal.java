@@ -53,7 +53,6 @@ import javafx.stage.StageStyle;
 public class Controller_View_Catalogo_Principal implements Initializable {
 
     private PilaStack_Producto pilaP = ModeloDeDatos.obtenerInstancia().getPilaP();
-    private PilaStack_Producto pilaPH = ModeloDeDatos.obtenerInstancia().getPilaP();
     private Map<Pane, Image> paneImageMap;
 
     @FXML
@@ -329,7 +328,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         cmbTallaP.setItems(FXCollections.observableArrayList(valuesCmb));
 
         almacenarImagen();
-        mostrarImagenes();
+        mostrarImagenes();        
     }
 
     public void ExportarFem() {
@@ -517,7 +516,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 int id = 0;
                 do {
                     id = (int) Math.floor(Math.random() * (5000 - 10 + 1) + 10);
-                } while (pilaPH.getProId_H(id) != null);
+                } while (pilaP.getProId_H(id) != null);
 
                 Integer idP = id;
 
@@ -546,7 +545,8 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 producto.setPrecio(precio);
                 producto.setComprador(comprador);
 
-                pilaPH.setPushProducto_H(producto);
+                pilaP.setPushProducto_H(producto);
+                pilaP.guardarDatosEnArchivoCompras(pilaP.getPilaPH());
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
             }
         });

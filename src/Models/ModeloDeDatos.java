@@ -7,9 +7,9 @@ import Models.EstructuraDeDatos.PilaStack_Producto;
 public class ModeloDeDatos {
 
     private static ModeloDeDatos instancia;
-    private ListaDobleAdmin listaA;
-    private ListaDobleCliente listaC;
-    private PilaStack_Producto pilaP;
+    private final ListaDobleAdmin listaA;
+    private final ListaDobleCliente listaC;
+    private final PilaStack_Producto pilaP;
 
     public ModeloDeDatos() {
         listaA = new ListaDobleAdmin();

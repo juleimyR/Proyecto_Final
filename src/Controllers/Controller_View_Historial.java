@@ -28,9 +28,9 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 public class Controller_View_Historial implements Initializable {
-
+    
     private PilaStack_Producto pilaPH = ModeloDeDatos.obtenerInstancia().getPilaP();
-
+    
     @FXML
     private Button btnEliminH;
     @FXML
@@ -51,10 +51,10 @@ public class Controller_View_Historial implements Initializable {
     private TableColumn<Nodo_Producto, String> col5;
     @FXML
     private TableColumn<Nodo_Producto, LocalDateTime> col6;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         col1.setCellValueFactory(new PropertyValueFactory<>("id"));
         col1.setStyle("-fx-alignment: CENTER");
         col2.setCellValueFactory(new PropertyValueFactory<>("marca"));
@@ -70,20 +70,20 @@ public class Controller_View_Historial implements Initializable {
         col6.setStyle("-fx-alignment: CENTER");
         actualizarTabla();
     }
-
+    
     @SuppressWarnings("PublicInnerClass")
     public class FormattedTableCell<S, T> extends javafx.scene.control.TableCell<S, T> {
-
+        
         private final String format;
-
+        
         public FormattedTableCell(String format) {
             this.format = format;
         }
-
+        
         @Override
         protected void updateItem(T item, boolean empty) {
             super.updateItem(item, empty);
-
+            
             if (item == null || empty) {
                 setText(null);
             } else {
@@ -91,7 +91,7 @@ public class Controller_View_Historial implements Initializable {
             }
         }
     }
-
+    
     @FXML
     private void eventAction(ActionEvent e) {
         if (e.getSource() == btnEliminH) {
@@ -102,13 +102,16 @@ public class Controller_View_Historial implements Initializable {
             alert.setTitle("Confirmación");
             alert.showAndWait().ifPresent((ButtonType response) -> {
                 if (response == ButtonType.YES) {
-
+                    
                     if (!pilaPH.getPilaPH().isEmpty()) {
-
-                        pilaPH.getPilaPH().pop();
+                        
+                        while (pilaPH.getPilaPH().size() > 0) {                            
+                            pilaPH.getPilaPH().pop();
+                        }                      
+                        pilaPH.guardarDatosEnArchivoCompras(pilaPH.getPilaPH());
                         actualizarTabla();
                     } else {
-
+                        
                         Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
                         alert2.setTitle("Información");
                         alert2.setContentText("¡No hay elementos por eliminar!");
@@ -123,25 +126,25 @@ public class Controller_View_Historial implements Initializable {
                     alert.close();
                 }
             });
-
+            
         } else if (e.getSource() == btnExpH) {
-
+            
             ExportarH();
-
+            
         } else if (e.getSource() == btnCerrar) {
-
+            
             Stage miStage = (Stage) this.btnCerrar.getScene().getWindow();
             miStage.close();
         }
     }
-
+    
     public void ExportarH() {
         Stage stage = new Stage();
         stage.setTitle("Exportar Historial");
-
+        
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(new File("src"));
-
+        
         Button button = new Button("Select Directory");
         button.setOnAction((ActionEvent ex) -> {
             try {
@@ -157,32 +160,32 @@ public class Controller_View_Historial implements Initializable {
                 a.showAndWait();
                 System.out.println("No se Pudo Guardar el archivo: " + e.getMessage());
             }
-
+            
         });
-
+        
         HBox vs = new HBox(new Label("Selecciona Direccion de Carpeta: "), button);
         vs.setAlignment(Pos.CENTER);
         vs.setPadding(new Insets(10));
         vs.setSpacing(10);
-
+        
         Scene scene = new Scene(vs);
-
+        
         stage.setScene(scene);
         stage.show();
     }
-
+    
     @SuppressWarnings("unchecked")
     public void actualizarTabla() {
         tableHistory.getItems().clear();
-
+        
         if (!pilaPH.getPilaPH().isEmpty()) {
             ObservableList<Nodo_Producto> data = FXCollections.observableArrayList();
             Stack<Nodo_Producto> pilaAux = new Stack<>();
-
+            
             pilaAux.addAll(pilaPH.getPilaPH());
-
+            
             data.addAll(pilaAux);
-
+            
             tableHistory.setItems(data);
         }
     }

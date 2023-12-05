@@ -138,7 +138,7 @@ public class ListaDobleCliente {
 
     public void guardarDatosEnArchivoClient(ListaDobleCliente listaC) {
 
-        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Client.txt";
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Client.txt";
 
         Path archivo = Paths.get(direccion);
 
@@ -164,7 +164,7 @@ public class ListaDobleCliente {
 
     public void cargarDatosDesdeArchivoClient() {
 
-        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Client.txt";
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Client.txt";
 
         Path archivo = Paths.get(direccion);
 

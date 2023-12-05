@@ -458,6 +458,7 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
                 producto.setComprador(comprador);
 
                 pilaPH.setPushProducto_H(producto);
+                pilaPH.guardarDatosEnArchivoCompras(pilaPH.getPilaPH());
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
             }
         });

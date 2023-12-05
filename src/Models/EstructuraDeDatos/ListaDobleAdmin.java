@@ -137,7 +137,7 @@ public class ListaDobleAdmin {
 
     public void guardarDatosEnArchivoAdmin(ListaDobleAdmin listaA) {
 
-        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Admin.txt";
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Admin.txt";
 
         Path archivo = Paths.get(direccion);
 
@@ -163,7 +163,7 @@ public class ListaDobleAdmin {
 
     public void cargarDatosDesdeArchivoAdmin() {
 
-        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Admin.txt";
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Admin.txt";
 
         Path archivo = Paths.get(direccion);
 

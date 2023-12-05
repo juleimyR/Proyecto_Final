@@ -86,7 +86,8 @@ public class Controller_View_Register implements Initializable {
 
             if (!Character.isDigit(event.getCharacter().charAt(0))) {
                 Alert a = new Alert(Alert.AlertType.WARNING);
-                a.setContentText("No puede ingresar caracteres\nno numericos..!");
+                a.setContentText("No puede ingresar caracteres\n"
+                        + "no numericos..!");
                 event.consume();
                 a.show();
             }
