@@ -13,13 +13,17 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Stack;
 import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
@@ -191,6 +195,16 @@ public class PilaStack_Producto {
             a.setTitle("Confirmación");
             a.setContentText("Compra registrada!");
             a.show();
+        } else {
+            System.out.println("El producto ya se encuentra registrado!");
+        }
+    }
+
+    public void setPushProducto_HC(Nodo_Producto p) {
+        int pos = pilaPH.indexOf(p);
+        if (pos == -1) {
+            pilaPH.push(p);
+            System.out.println("Seguardó bien");
         } else {
             System.out.println("El producto ya se encuentra registrado!");
         }
@@ -372,7 +386,7 @@ public class PilaStack_Producto {
 
     public void cargarProductos_MaDesdeArchivo() {
 
-        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Productos_M.txt";
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Productos_M.txt";
 
         Path archivo = Paths.get(direccion);
 
@@ -473,7 +487,7 @@ public class PilaStack_Producto {
 
     public void cargarProductos_FeDesdeArchivo() {
 
-        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosTXT\\Archivo_Productos_F.txt";
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Productos_F.txt";
 
         Path archivo = Paths.get(direccion);
 
@@ -507,6 +521,63 @@ public class PilaStack_Producto {
             System.out.println("Error al cargar los datos desde el archivo de clientes: " + e.getMessage());
         }
     }
-    
-    
+
+    public void guardarDatosEnArchivoCompras(Stack<Nodo_Producto> pilaPH) {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Compras.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo.toFile(), false))) {
+            Stack<Nodo_Producto> proAux = pilaPH;
+
+            for (Nodo_Producto producto : proAux) {
+                writer.write(producto.getId() + ", ");
+                writer.write(producto.getMarca() + ", ");
+                writer.write(producto.getTipo() + ", ");
+                writer.write(producto.getPrecio() + ", ");
+                writer.write(producto.getComprador() + ", ");
+                writer.write(String.valueOf(producto.getFechaCompra()));
+                writer.newLine();
+            }
+
+            System.out.println("Datos guardados correctamente en el archivo de compras.");
+        } catch (IOException e) {
+            System.out.println("Error al guardar los datos en el archivo de compras: " + e.getMessage());
+        }
+    }
+
+    public void cargarDatosDesdeArchivoCompras() {
+
+        String direccion = System.getProperty("user.dir") + "\\src\\ArchivosBase_TXT\\Archivo_Compras.txt";
+
+        Path archivo = Paths.get(direccion);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
+
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+
+                String[] atributos = linea.split(", ");
+
+                Integer id = Integer.valueOf(atributos[0]);
+                String marca = atributos[1];
+                String tipo = atributos[2];
+                Float precio = Float.valueOf(atributos[3]);
+                String comprador = atributos[4];
+                DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+                LocalDateTime fechaCompra = LocalDateTime.parse(atributos[5], formatter);
+
+                Nodo_Producto producto = new Nodo_Producto(id, marca, tipo, precio, comprador, fechaCompra);
+
+                setPushProducto_HC(producto);
+            }
+
+            System.out.println("Datos cargados correctamente desde archivo de compras.");
+        } catch (IOException e) {
+            System.out.println("Error al cargar los datos desde el archivo de compras: " + e.getMessage());
+        }
+    }
+
 }
