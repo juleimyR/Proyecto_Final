@@ -1,7 +1,13 @@
 package Controllers;
 
+import Models.EstructuraDeDatos.PilaStack_Producto;
+import Models.ModeloDeDatos;
+import Models.Nodos.Nodo_Producto;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -39,10 +45,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javax.swing.JOptionPane;
 
 public class Controller_View_Catalogo_Usuario implements Initializable {
 
+    private PilaStack_Producto pilaPH = ModeloDeDatos.obtenerInstancia().getPilaP();
     private Map<Pane, Image> paneImageMap;
 
     @FXML
@@ -364,6 +370,15 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
         }
     }
 
+    private Node getNodeFromGridPane(GridPane gridPane, int rowIndex, int colIndex) {
+        for (Node node : gridPane.getChildren()) {
+            if (GridPane.getRowIndex(node) == rowIndex && GridPane.getColumnIndex(node) == colIndex) {
+                return node;
+            }
+        }
+        return null;
+    }
+
     @FXML
     private void aggCarrito(ActionEvent event) {
         Button eventBtn = (Button) event.getSource();
@@ -394,6 +409,55 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
             public void handle(ActionEvent event) {
                 System.out.println("Botón clickeado");
                 System.out.println(btnEliminar.getId());
+                panelContenCarrito.getChildren().remove(contendElemtProductos);
+            }
+        });
+
+        btnComprar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Botón clickeado");
+                System.out.println(btnComprar.getId());
+
+                Nodo_Producto producto = new Nodo_Producto();
+
+                Node marcaProducto = getNodeFromGridPane(contendElemtProductos, 2, 0);
+                Node tipoProducto = getNodeFromGridPane(contendElemtProductos, 0, 1);
+                Node precioProducto = getNodeFromGridPane(contendElemtProductos, 1, 1);
+
+                int id = 0;
+                do {
+                    id = (int) Math.floor(Math.random() * (5000 - 10 + 1) + 10);
+                } while (pilaPH.getProId_H(id) != null);
+
+                Integer idP = id;
+
+                Label marcaLabel = (Label) marcaProducto;
+                String marca = marcaLabel.getText();
+
+                Label tipoLabel = (Label) tipoProducto;
+                String tipo = tipoLabel.getText();
+
+                Label precioLabel = (Label) precioProducto;
+                DecimalFormat formatoDecimal = new DecimalFormat(".00");
+                float precio = 0;
+                try {
+                    precio = formatoDecimal.parse(precioLabel.getText()).floatValue();
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controller_View_Catalogo_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                String comprador = labelUser.getText();
+
+                LocalDateTime fechaHoraActual = LocalDateTime.now();
+                producto.setFechaCompra(fechaHoraActual);
+                producto.setId(idP);
+                producto.setMarca(marca);
+                producto.setTipo(tipo);
+                producto.setPrecio(precio);
+                producto.setComprador(comprador);
+
+                pilaPH.setPushProducto_H(producto);
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
             }
         });
@@ -866,49 +930,49 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
             lblMarca01.setText("PUFF GIRL");
             lblGenero01.setText("FEMENINO");
             lblTipo01.setText("CAMISETA");
-            lblPrecio01.setText("49.254");
+            lblPrecio01.setText("49254");
 
             paneImageMap.put(img2, new Image("/Images/Catalogo_Mujeres/OufitWoman2.png"));
             lblMarca02.setText("CALVIN KLEIN");
             lblGenero02.setText("FEMENINO");
             lblTipo02.setText("BUZO-BLANCO");
-            lblPrecio02.setText("389.900");
+            lblPrecio02.setText("389900");
 
             paneImageMap.put(img3, new Image("/Images/Catalogo_Mujeres/OufitWoman3.png"));
             lblMarca03.setText("GENERICO");
             lblGenero03.setText("FEMENINO");
             lblTipo03.setText("BUZO HOODIE");
-            lblPrecio03.setText("103.000");
+            lblPrecio03.setText("103000");
 
             paneImageMap.put(img4, new Image("/Images/Catalogo_Mujeres/OufitWoman4.png"));
             lblMarca04.setText("GENERICO");
             lblGenero04.setText("FEMENINO");
             lblTipo04.setText("BUZO HOODIE");
-            lblPrecio04.setText("103.000");
+            lblPrecio04.setText("103000");
 
             paneImageMap.put(img5, new Image("/Images/Catalogo_Mujeres/OufitWoman5.png"));
             lblMarca05.setText("SHINYINYY");
             lblGenero05.setText("FEMENINO");
             lblTipo05.setText("MINI FALDA");
-            lblPrecio05.setText("57.835");
+            lblPrecio05.setText("57835");
 
             paneImageMap.put(img6, new Image("/Images/Catalogo_Mujeres/OufitWoman6.png"));
             lblMarca06.setText("ZARA");
             lblGenero06.setText("FEMENINO");
             lblTipo06.setText("CONJUNTO");
-            lblPrecio06.setText("126.440");
+            lblPrecio06.setText("126440");
 
             paneImageMap.put(img7, new Image("/Images/Catalogo_Mujeres/OufitWoman7.png"));
             lblMarca07.setText("REDANK");
             lblGenero07.setText("FEMENINO");
             lblTipo07.setText("JOGGER-SHORT");
-            lblPrecio07.setText("31.500");
+            lblPrecio07.setText("31500");
 
             paneImageMap.put(img8, new Image("/Images/Catalogo_Mujeres/OufitWoman8.png"));
             lblMarca08.setText("MOVIES");
             lblGenero08.setText("FEMENINO");
             lblTipo08.setText("JOGGER");
-            lblPrecio08.setText("94.990");
+            lblPrecio08.setText("94990");
             mostrarImagenes();
 
         } else if (event.getSource() == btnMas) {
@@ -929,49 +993,49 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
             lblMarca01.setText("NIKE");
             lblGenero01.setText("MASCULINO");
             lblTipo01.setText("CAMISETA");
-            lblPrecio01.setText("103.900");
+            lblPrecio01.setText("103900");
 
             paneImageMap.put(img2, new Image("/Images/Catalogo_Hombres/OufitMen2.png"));
             lblMarca02.setText("NIKE");
             lblGenero02.setText("MASCULINO");
             lblTipo02.setText("CAMISETA");
-            lblPrecio02.setText("117.900");
+            lblPrecio02.setText("117900");
 
             paneImageMap.put(img3, new Image("/Images/Catalogo_Hombres/OufitMen3.png"));
             lblMarca03.setText("NIKE");
             lblGenero03.setText("MASCULINO");
             lblTipo03.setText("CAMISETA");
-            lblPrecio03.setText("130.900");
+            lblPrecio03.setText("130900");
 
             paneImageMap.put(img4, new Image("/Images/Catalogo_Hombres/OufitMen4.png"));
             lblMarca04.setText("NIKE");
             lblGenero04.setText("MASCULINO");
             lblTipo04.setText("BUZO");
-            lblPrecio04.setText("237.900");
+            lblPrecio04.setText("237900");
 
             paneImageMap.put(img5, new Image("/Images/Catalogo_Hombres/OufitMen5.png"));
             lblMarca05.setText("MOVIES");
             lblGenero05.setText("MASCULINO");
             lblTipo05.setText("JOGGER-BEIGE");
-            lblPrecio05.setText("79.995");
+            lblPrecio05.setText("79995");
 
             paneImageMap.put(img6, new Image("/Images/Catalogo_Hombres/OufitMen6.png"));
             lblMarca06.setText("MOVIES");
             lblGenero06.setText("MASCULINO");
             lblTipo06.setText("JOGGER-GRIS");
-            lblPrecio06.setText("74.995");
+            lblPrecio06.setText("74995");
 
             paneImageMap.put(img7, new Image("/Images/Catalogo_Hombres/OufitMen7.png"));
             lblMarca07.setText("HA");
             lblGenero07.setText("MASCULINO");
             lblTipo07.setText("JOGGER-NEGRO");
-            lblPrecio07.setText("129.900");
+            lblPrecio07.setText("129900");
 
             paneImageMap.put(img8, new Image("/Images/Catalogo_Hombres/OufitMen8.png"));
             lblMarca07.setText("HA");
             lblGenero07.setText("MASCULINO");
             lblTipo07.setText("JOGGER");
-            lblPrecio07.setText("94.900");
+            lblPrecio07.setText("94900");
             mostrarImagenes();
         }
 
@@ -1018,20 +1082,20 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
                         alert2.setHeaderText("Hasta la proxima..!");
                         alert2.setContentText("¡Cerrando sesión..!");
                         alert2.showAndWait();
-                        
+
                         Stage miStage = (Stage) this.btnCerrarS.getScene().getWindow();
                         miStage.close();
-                        
+
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_Arranque.fxml"));
-                        
+
                         Parent roott = loader.load();
-                        
+
                         Scene scene = new Scene(roott);
                         Stage stage = new Stage();
-                        
+
                         stage.initModality(Modality.APPLICATION_MODAL);
                         stage.initStyle(StageStyle.UNDECORATED);
-                        
+
                         stage.setScene(scene);
                         stage.show();
                     } catch (IOException ex) {

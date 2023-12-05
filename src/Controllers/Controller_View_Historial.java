@@ -4,22 +4,17 @@ import Models.EstructuraDeDatos.PilaStack_Producto;
 import Models.ModeloDeDatos;
 import Models.Nodos.Nodo_Producto;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -30,9 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Controller_View_Historial implements Initializable {
 
@@ -53,7 +46,7 @@ public class Controller_View_Historial implements Initializable {
     @FXML
     private TableColumn<Nodo_Producto, String> col3;
     @FXML
-    private TableColumn<Nodo_Producto, Long> col4;
+    private TableColumn<Nodo_Producto, Float> col4;
     @FXML
     private TableColumn<Nodo_Producto, String> col5;
     @FXML
@@ -69,12 +62,34 @@ public class Controller_View_Historial implements Initializable {
         col3.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         col3.setStyle("-fx-alignment: CENTER");
         col4.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        col4.setCellFactory(tc -> new FormattedTableCell<>("%.2f"));
         col4.setStyle("-fx-alignment: CENTER");
         col5.setCellValueFactory(new PropertyValueFactory<>("comprador"));
         col5.setStyle("-fx-alignment: CENTER");
         col6.setCellValueFactory(new PropertyValueFactory<>("fechaCompra"));
         col6.setStyle("-fx-alignment: CENTER");
         actualizarTabla();
+    }
+
+    @SuppressWarnings("PublicInnerClass")
+    public class FormattedTableCell<S, T> extends javafx.scene.control.TableCell<S, T> {
+
+        private final String format;
+
+        public FormattedTableCell(String format) {
+            this.format = format;
+        }
+
+        @Override
+        protected void updateItem(T item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item == null || empty) {
+                setText(null);
+            } else {
+                setText(String.format(format, item));
+            }
+        }
     }
 
     @FXML
