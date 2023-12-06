@@ -4,6 +4,7 @@ import Models.EstructuraDeDatos.ListaDobleAdmin;
 import Models.EstructuraDeDatos.ListaDobleCliente;
 import Models.ModeloDeDatos;
 import Models.Nodos.Nodo_Administrador;
+import Models.Nodos.Nodo_Cliente;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -103,6 +104,31 @@ public class Controller_View_CambiarClave implements Initializable {
 
         } else if (event.getSource() == btnValidar && "USER".equals(textIndice.getText())) {
 
+            Nodo_Cliente client = listaC.BuscarEmail(txtUser.getText());
+            if (client != null) {
+
+                if ((client.getPasswd()).equals(txtPass.getText())) {
+
+                    listaC.Alert(Alert.AlertType.CONFIRMATION, "Correcto", "Proceda a ingresar la nueva clave..!");
+
+                    txtPass.setText("");
+                    contendTXT.setVisible(false);
+                    contendTXT2.setVisible(true);
+                    btnValidar.setVisible(false);
+                    btnCambiar.setVisible(true);
+                } else {
+
+                    listaC.Alert(Alert.AlertType.WARNING, "Fatal", "Contraseña incorrecta");
+                    txtPass.setText("");
+                    txtPass.requestFocus();
+
+                }
+            } else {
+                listaC.Alert(Alert.AlertType.CONFIRMATION, "Fatal", "Parece que el usuario no exite..!");
+                txtUser.requestFocus();
+                txtPass.setText("");
+            }
+
         } else if (event.getSource() == btnCambiar && "ADMIN".equals(textIndice.getText())) {
             Alert a = new Alert(Alert.AlertType.WARNING);
             a.setTitle("Aviso");
@@ -143,6 +169,44 @@ public class Controller_View_CambiarClave implements Initializable {
             }
 
         } else if (event.getSource() == btnCambiar && "USER".equals(textIndice.getText())) {
+
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setTitle("Aviso");
+            if (!txtPass2.getText().isEmpty()) {
+                if (!txtPass3.getText().isEmpty()) {
+
+                    if (txtPass2.getText().equals(txtPass3.getText())) {
+                        Nodo_Cliente client = listaC.BuscarEmail(txtUser.getText());
+                        if (client != null) {
+
+                            String nuevaClave = txtPass2.getText();
+                            client.setPasswd(nuevaClave);
+                            a.setAlertType(Alert.AlertType.INFORMATION);
+                            a.setContentText("Cambio de contraseña exitoso..!");
+                            a.showAndWait();
+                            Stage stage = (Stage) this.btnCambiar.getScene().getWindow();
+                            stage.close();
+                            listaC.guardarDatosEnArchivoClient(listaC);
+
+                        } else {
+                            a.setContentText("No se encontró");
+                            a.show();
+                        }
+
+                    } else {
+                        a.setContentText("Verificación invalida"
+                                + "La nueva contraseña no coincide");
+                        a.show();
+                        txtPass3.setText("");
+                    }
+                } else {
+                    a.setContentText("El campo de verificación está vacio");
+                    a.show();
+                }
+            } else {
+                a.setContentText("Debe ingresar una nueva Contraseña");
+                a.show();
+            }
 
         } else if (event.getSource() == btnAtras) {
 

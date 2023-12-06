@@ -38,6 +38,10 @@ public class ListaDobleCliente {
         this.nClientes = nClientes;
     }
 
+    public void vaciarLista() {
+        cabC = null;
+    }
+
     public void Alert(Alert.AlertType alertType, String tit, String mj) {
         Alert a = new Alert(alertType);
         a.setTitle(tit);
@@ -172,6 +176,8 @@ public class ListaDobleCliente {
 
             String linea;
 
+            vaciarLista();
+            
             while ((linea = reader.readLine()) != null) {
 
                 String[] atributos = linea.split(", ");
