@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -510,26 +511,32 @@
     </Pane>
     <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#pVisible" prefHeight="53.0" prefWidth="726.0" style="-fx-background-color: A6CADB;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <children>
-            <ScrollPane fx:id="scrollPane" focusTraversable="false" layoutX="732.0" layoutY="45.0" prefHeight="455.0" prefWidth="375.0" style="-fx-fit-to-width: true; -fx-fit-to-height: true;" visible="false">
-                <content>
-                    <VBox fx:id="panelContenCarrito" alignment="TOP_RIGHT" prefHeight="451.0" prefWidth="372.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 4px;">
+         <Pane fx:id="scrollPane01" layoutX="733.0" layoutY="46.0" prefHeight="455.0" prefWidth="375.0" visible="false">
+            <children>
+               <HBox alignment="CENTER" prefHeight="77.0" prefWidth="375.0" spacing="4.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 4;" styleClass="panelUser">
+                  <children>
+                     <Button fx:id="btnPagarProduct" mnemonicParsing="false" onAction="#realizarPago" prefHeight="25.0" prefWidth="246.0" styleClass="btnAdd" text="PAGAR PRODUCTOS">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <TextField fx:id="txtTotal" editable="false" prefHeight="25.0" prefWidth="82.0" promptText="\$$$$$$" />
+                  </children>
+               </HBox>
+               <ScrollPane fx:id="scrollPane" focusTraversable="false" layoutY="74.0" prefHeight="394.0" prefWidth="375.0" visible="false">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <content>
+                     <AnchorPane prefHeight="373.0" prefWidth="367.0">
                         <children>
-                            <HBox alignment="CENTER" prefHeight="77.0" prefWidth="365.0" style="-fx-background-color: F0F0F0;" VBox.vgrow="NEVER">
-                                <children>
-                                    <Button fx:id="btnPagarProduct" mnemonicParsing="false" onAction="#realizarPago" prefHeight="25.0" prefWidth="246.0" text="PAGAR PRODUCTOS">
-                                        <cursor>
-                                            <Cursor fx:constant="HAND" />
-                                        </cursor>
-                                    </Button>
-                                </children>
-                            </HBox>
+                           <VBox fx:id="panelContenCarrito" alignment="TOP_RIGHT" layoutX="-2.0" layoutY="-2.0" prefHeight="394.0" prefWidth="375.0" style="-fx-background-color: whitesmoke; -fx-border-color: black; -fx-border-width: 4;" styleClass="fondoCarro" />
                         </children>
-                    </VBox>
-                </content>
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-            </ScrollPane>
+                     </AnchorPane>
+                  </content>
+               </ScrollPane>
+            </children>
+         </Pane>
             <Pane fx:id="panelContenProdPagados" layoutX="675.0" layoutY="46.0" prefHeight="451.0" prefWidth="372.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3px;" visible="false" />
             <Button fx:id="btnGen" layoutX="33.0" layoutY="10.0" mnemonicParsing="false" onAction="#actionEvent" styleClass="btnMenu" stylesheets="@../Styles/Style.css" text="GENERO" />
             <Pane fx:id="Pmenu" layoutX="33.0" layoutY="42.0" prefHeight="69.0" prefWidth="200.0" style="-fx-background-color: #38B2AC;" visible="false">

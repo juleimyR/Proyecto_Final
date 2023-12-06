@@ -285,6 +285,12 @@
     -fx-padding: 2 2 2 2;
     -fx-hgap: 5px;
 }
+
+.fondoCarro{
+    -fx-background-image: url('../Images/Inicio/Logo.png');
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
 /*Style View_Catalogo_Principal*/
 
 /*Style View_Historial*/
