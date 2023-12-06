@@ -301,6 +301,8 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
     private Pane scrollPane01;
     @FXML
     private TextField txtTotal;
+    @FXML
+    private VBox contenPagados;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -487,6 +489,41 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
 
                 pilaPH.setPushProducto_H(producto);
                 pilaPH.guardarDatosEnArchivoCompras(pilaPH.getPilaPH());
+                
+                GridPane grid1 = (GridPane) btnComprar.getParent();
+                Node image = getNodeFromGridPane(grid1, 1, 0);
+                Node total = getNodeFromGridPane(grid1, 1, 1);
+
+                Label pre = (Label) total;
+                Label precioT = new Label();
+                precioT.setText("Precio: " + pre.getText());
+
+                Label estado = new Label();
+                estado.setText("Estado: Enviado");
+
+                Label fecha1 = new Label();
+                Label fecha2 = new Label();
+                String f = String.valueOf(fechaHoraActual);
+                fecha1.setText(f);
+                String[] date = fecha1.getText().split("T");
+                fecha2.setText("Fecha envio: " + date[0]);
+
+                GridPane grid2 = new GridPane();
+                ColumnConstraints column = new ColumnConstraints();
+                column.setPrefWidth(contenPagados.getWidth() / 3);
+
+                grid2.getColumnConstraints().addAll(column);
+                grid2.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
+                grid2.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
+                grid2.getStyleClass().add("gridCarro");
+
+                grid2.add(image, 0, 1);
+                grid2.add(precioT, 1, 0);
+                grid2.add(estado, 1, 1);
+                grid2.add(fecha2, 1, 2);
+
+                contenPagados.getChildren().add(grid2);
+                
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
                 double t = 0;
                 for (int i = 0; i < panelContenCarrito.getChildren().size(); i++) {
