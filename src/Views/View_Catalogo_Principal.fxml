@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1120.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller_View_Catalogo_Principal">
     <children>
@@ -534,7 +535,19 @@
                       </ScrollPane>
                </children>
             </Pane>
-                <Pane fx:id="panelContenProdPagados" layoutX="675.0" layoutY="46.0" prefHeight="451.0" prefWidth="372.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3px;" visible="false" />
+                <Pane fx:id="panelContenProdPagados" layoutX="675.0" layoutY="46.0" prefHeight="451.0" prefWidth="372.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3px;" visible="false">
+               <children>
+                  <VBox fx:id="contenPagados" layoutY="51.0" prefHeight="400.0" prefWidth="372.0" styleClass="fondoCarro" />
+                  <Pane prefHeight="53.0" prefWidth="372.0" style="-fx-background-color: #ffa69e; -fx-border-color: #333; -fx-border-width: 2;">
+                     <children>
+                        <Text layoutX="110.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado de Compras">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children></Pane>
                 <Button fx:id="btnGen" layoutX="33.0" layoutY="10.0" mnemonicParsing="false" onAction="#actionEvent" styleClass="btnMenu" stylesheets="@../Styles/Style.css" text="GENERO" />
                 <Button fx:id="btnExp" layoutX="141.0" layoutY="10.0" mnemonicParsing="false" onAction="#actionEvent" styleClass="btnMenu" stylesheets="@../Styles/Style.css" text="EXPORTAR" />
                 <Pane fx:id="Pmenu" layoutX="33.0" layoutY="42.0" prefHeight="69.0" prefWidth="200.0" style="-fx-background-color: #38B2AC;" visible="false">
