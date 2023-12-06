@@ -90,7 +90,9 @@ public class Controller_View_Arranque extends Application implements Initializab
         listaC.cargarDatosDesdeArchivoClient();
         pilaP.cargarProductos_MaDesdeArchivo();
         pilaP.cargarProductos_FeDesdeArchivo();
-        pilaP.cargarDatosDesdeArchivoCompras();
+        if (pilaP.getPilaPH().isEmpty()) {
+            pilaP.cargarDatosDesdeArchivoCompras();
+        }
     }
 
     @FXML

@@ -204,7 +204,6 @@ public class PilaStack_Producto {
         int pos = pilaPH.indexOf(p);
         if (pos == -1) {
             pilaPH.push(p);
-            System.out.println("Seguardó bien");
         } else {
             System.out.println("El producto ya se encuentra registrado!");
         }
@@ -556,7 +555,11 @@ public class PilaStack_Producto {
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
 
             String linea;
-
+            if (!pilaPH.isEmpty()) {
+                for (int i = 0; i > pilaPH.size(); i++) {
+                    pilaPH.pop();
+                }
+            }
             while ((linea = reader.readLine()) != null) {
 
                 String[] atributos = linea.split(", ");

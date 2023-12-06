@@ -32,6 +32,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -312,6 +313,10 @@ public class Controller_View_Catalogo_Principal implements Initializable {
     private Label lblPrecio04;
     @FXML
     public Label labelUser;
+    @FXML
+    private Pane scrollPane01;
+    @FXML
+    private TextField txtTotal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -328,7 +333,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         cmbTallaP.setItems(FXCollections.observableArrayList(valuesCmb));
 
         almacenarImagen();
-        mostrarImagenes();        
+        mostrarImagenes();
     }
 
     public void ExportarFem() {
@@ -449,11 +454,9 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             a.show();
             return false;
         } else {
-            String strMarca = marca.getText();
-            String strTipo = tipo.getText();
-            String strPrecio = precio.getText();
-            String strGenero = genero.getText();
-            //String strTalla = talla.getValue().toString();
+            a.setAlertType(Alert.AlertType.INFORMATION);
+            a.setContentText("Producto agregado..!");
+            a.show();
             return true;
         }
     }
@@ -483,11 +486,11 @@ public class Controller_View_Catalogo_Principal implements Initializable {
 
         GridPane contendElemtProductos = new GridPane();
         contendElemtProductos.setAlignment(Pos.CENTER);
+        contendElemtProductos.setMaxSize(375, 394);
         ColumnConstraints column = new ColumnConstraints();
-        column.setPrefWidth(panelContenCarrito.getWidth() / 4);
+        column.setPrefWidth(panelContenCarrito.getWidth() / 2);
 
         contendElemtProductos.getColumnConstraints().addAll(column);
-        contendElemtProductos.prefWidth(panelContenCarrito.getMaxWidth());
         contendElemtProductos.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, null, null)));
         contendElemtProductos.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
         contendElemtProductos.getStyleClass().add("gridCarro");
@@ -498,6 +501,27 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 System.out.println("Botón clickeado");
                 System.out.println(btnEliminar.getId());
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
+                double t = 0;
+                for (int i = 0; i < panelContenCarrito.getChildren().size(); i++) {
+                    if (panelContenCarrito.getChildren().get(i) instanceof GridPane) {
+
+                        GridPane gridPane = (GridPane) panelContenCarrito.getChildren().get(i);
+
+                        Node dato = getNodeFromGridPane(gridPane, 1, 1);
+
+                        Label precio = (Label) dato;
+
+                        double p = Double.parseDouble(precio.getText());
+
+                        txtTotal.setText("$" + (p + t));
+                        String[] to = txtTotal.getText().split("\\$");
+                        t = Double.parseDouble(to[1]);
+                    }
+                }
+
+                if (panelContenCarrito.getChildren().isEmpty()) {
+                    txtTotal.setText("");
+                }
             }
         });
 
@@ -548,6 +572,27 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 pilaP.setPushProducto_H(producto);
                 pilaP.guardarDatosEnArchivoCompras(pilaP.getPilaPH());
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
+                double t = 0;
+                for (int i = 0; i < panelContenCarrito.getChildren().size(); i++) {
+                    if (panelContenCarrito.getChildren().get(i) instanceof GridPane) {
+
+                        GridPane gridPane = (GridPane) panelContenCarrito.getChildren().get(i);
+
+                        Node dato = getNodeFromGridPane(gridPane, 1, 1);
+
+                        Label precio2 = (Label) dato;
+
+                        double p = Double.parseDouble(precio2.getText());
+
+                        txtTotal.setText("$" + (p + t));
+                        String[] to = txtTotal.getText().split("\\$");
+                        t = Double.parseDouble(to[1]);
+                    }
+                }
+
+                if (panelContenCarrito.getChildren().isEmpty()) {
+                    txtTotal.setText("");
+                }
             }
         });
 
@@ -601,7 +646,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                    if (tomarDatosProducto(lblMarca02, lblTipo02, lblPrecio02, lblGenero02, cmbTalla2)) {
                         panelContenCarrito.getChildren().add(contendElemtProductos);
                     }
                     break;
@@ -628,7 +673,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                    if (tomarDatosProducto(lblMarca03, lblTipo03, lblPrecio03, lblGenero03, cmbTalla3)) {
                         panelContenCarrito.getChildren().add(contendElemtProductos);
                     }
                     break;
@@ -654,7 +699,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                    if (tomarDatosProducto(lblMarca04, lblTipo04, lblPrecio04, lblGenero04, cmbTalla4)) {
                         panelContenCarrito.getChildren().add(contendElemtProductos);
                     }
                     break;
@@ -680,7 +725,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                    if (tomarDatosProducto(lblMarca05, lblTipo05, lblPrecio05, lblGenero05, cmbTalla5)) {
                         panelContenCarrito.getChildren().add(contendElemtProductos);
                     }
                     break;
@@ -706,7 +751,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                    if (tomarDatosProducto(lblMarca06, lblTipo06, lblPrecio06, lblGenero06, cmbTalla6)) {
                         panelContenCarrito.getChildren().add(contendElemtProductos);
                     }
                     break;
@@ -732,7 +777,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                    if (tomarDatosProducto(lblMarca07, lblTipo07, lblPrecio07, lblGenero07, cmbTalla7)) {
                         panelContenCarrito.getChildren().add(contendElemtProductos);
                     }
                     break;
@@ -758,7 +803,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                     contendElemtProductos.add(btnComprar, 1, 2);
                     contendElemtProductos.add(btnEliminar, 2, 2);
 
-                    if (tomarDatosProducto(lblMarca01, lblTipo01, lblPrecio01, lblGenero01, cmbTalla1)) {
+                    if (tomarDatosProducto(lblMarca08, lblTipo08, lblPrecio08, lblGenero08, cmbTalla8)) {
                         panelContenCarrito.getChildren().add(contendElemtProductos);
                     }
                     break;
@@ -1143,6 +1188,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 PmenuP.setVisible(false);
                 panelContenProdPagados.setVisible(false);
                 scrollPane.setVisible(false);
+                scrollPane01.setVisible(false);
             }
         } else if (event.getSource() == btnExp) {
             if (PmenuE.isVisible()) {
@@ -1154,6 +1200,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 PmenuP.setVisible(false);
                 panelContenProdPagados.setVisible(false);
                 scrollPane.setVisible(false);
+                scrollPane01.setVisible(false);
             }
         } else if (event.getSource() == btnExFem) {
 
@@ -1189,9 +1236,33 @@ public class Controller_View_Catalogo_Principal implements Initializable {
                 PmenuP.setVisible(true);
                 panelContenProdPagados.setVisible(false);
                 scrollPane.setVisible(false);
+                scrollPane01.setVisible(false);
             }
         } else if (event.getSource() == btnCarro) {
+            double t = 0;
+            for (int i = 0; i < panelContenCarrito.getChildren().size(); i++) {
+                if (panelContenCarrito.getChildren().get(i) instanceof GridPane) {
+
+                    GridPane gridPane = (GridPane) panelContenCarrito.getChildren().get(i);
+
+                    Node dato = getNodeFromGridPane(gridPane, 1, 1);
+
+                    Label precio = (Label) dato;
+
+                    double p = Double.parseDouble(precio.getText());
+
+                    txtTotal.setText("$" + (p + t));
+                    String[] to = txtTotal.getText().split("\\$");
+                    t = Double.parseDouble(to[1]);
+                }
+            }
+
+            if (panelContenCarrito.getChildren().isEmpty()) {
+                txtTotal.setText("");
+            }
+
             scrollPane.setVisible(!scrollPane.isVisible());
+            scrollPane01.setVisible(!scrollPane01.isVisible());
             PmenuP.setVisible(false);
             Pmenu.setVisible(false);
             PmenuE.setVisible(false);
@@ -1243,6 +1314,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
             Pmenu.setVisible(false);
             PmenuE.setVisible(false);
             scrollPane.setVisible(false);
+            scrollPane01.setVisible(false);
 
         }
     }
@@ -1253,6 +1325,7 @@ public class Controller_View_Catalogo_Principal implements Initializable {
         Pmenu.setVisible(false);
         PmenuE.setVisible(false);
         scrollPane.setVisible(false);
+        scrollPane01.setVisible(false);
         panelContenProdPagados.setVisible(false);
     }
 
