@@ -392,7 +392,9 @@ public class PilaStack_Producto {
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo.toFile()))) {
 
             String linea;
-
+            if (!pilaPM.isEmpty()) {
+                pilaPM.clear();
+            }
             while ((linea = reader.readLine()) != null) {
 
                 String[] atributos = linea.split(", ");
@@ -407,7 +409,7 @@ public class PilaStack_Producto {
                 producto.setUrl_Imag(url);
                 producto.setMarca(marca);
                 producto.setTipo(tipo);
-                producto.setPrecio((long) precio);
+                producto.setPrecio((float) precio);
                 producto.setGenero(genero);
                 producto.setTalla("XS, S, M, L, XL");
 
@@ -494,6 +496,9 @@ public class PilaStack_Producto {
 
             String linea;
 
+            if (!pilaPF.isEmpty()) {
+                pilaPF.clear();
+            }
             while ((linea = reader.readLine()) != null) {
 
                 String[] atributos = linea.split(", ");
@@ -556,9 +561,7 @@ public class PilaStack_Producto {
 
             String linea;
             if (!pilaPH.isEmpty()) {
-                for (int i = 0; i > pilaPH.size(); i++) {
-                    pilaPH.pop();
-                }
+                pilaPH.clear();
             }
             while ((linea = reader.readLine()) != null) {
 

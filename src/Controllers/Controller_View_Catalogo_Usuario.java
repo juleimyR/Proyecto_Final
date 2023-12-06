@@ -1197,6 +1197,27 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
             scrollPane.setVisible(false);
             scrollPane01.setVisible(false);
 
+        } else if (event.getSource() == btnCambC) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/View_CambiarClave.fxml"));
+
+                Parent roott = loader.load();
+
+                Controller_View_CambiarClave controller = loader.getController();
+                controller.getTextIndice().setText("USER");
+                controller.getTxtUser().setText(labelUser.getText());
+
+                Scene scene = new Scene(roott);
+                Stage stage = new Stage();
+
+                stage.initStyle(StageStyle.UNDECORATED);
+
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Controller_View_Catalogo_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
     }
 

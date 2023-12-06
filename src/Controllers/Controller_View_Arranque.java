@@ -88,8 +88,14 @@ public class Controller_View_Arranque extends Application implements Initializab
 
         listaA.cargarDatosDesdeArchivoAdmin();
         listaC.cargarDatosDesdeArchivoClient();
-        pilaP.cargarProductos_MaDesdeArchivo();
-        pilaP.cargarProductos_FeDesdeArchivo();
+        if (pilaP.getPilaPM().isEmpty()) {
+            pilaP.cargarProductos_MaDesdeArchivo();
+        }
+
+        if (pilaP.getPilaPF().isEmpty()) {
+            pilaP.cargarProductos_FeDesdeArchivo();
+        }
+
         if (pilaP.getPilaPH().isEmpty()) {
             pilaP.cargarDatosDesdeArchivoCompras();
         }
