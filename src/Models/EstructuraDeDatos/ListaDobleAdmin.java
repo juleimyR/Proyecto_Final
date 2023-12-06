@@ -38,6 +38,10 @@ public class ListaDobleAdmin {
         this.nAdmins = nAdmins;
     }
 
+    public void vaciarLista() {
+        cabA = null;
+    }
+
     public void Alert(Alert.AlertType alertType, String tit, String mj) {
         Alert a = new Alert(alertType);
         a.setTitle(tit);
@@ -171,6 +175,8 @@ public class ListaDobleAdmin {
 
             String linea;
 
+            vaciarLista();
+            
             while ((linea = reader.readLine()) != null) {
 
                 String[] atributos = linea.split(", ");
