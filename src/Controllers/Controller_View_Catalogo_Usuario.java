@@ -49,7 +49,7 @@ import javafx.stage.StageStyle;
 
 public class Controller_View_Catalogo_Usuario implements Initializable {
 
-    private PilaStack_Producto pilaPH = ModeloDeDatos.obtenerInstancia().getPilaP();
+    private PilaStack_Producto pilaP = ModeloDeDatos.obtenerInstancia().getPilaP();
     private Map<Pane, Image> paneImageMap;
 
     @FXML
@@ -202,8 +202,6 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
     @FXML
     private Button btnAggCarritoP;
     @FXML
-    private Button btnVolver;
-    @FXML
     private Button btnPagarProduct;
     @FXML
     private Button btnGen;
@@ -303,6 +301,30 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
     private TextField txtTotal;
     @FXML
     private VBox contenPagados;
+    @FXML
+    private HBox panelFoto1;
+    @FXML
+    private Button btnVolver1;
+    @FXML
+    private HBox panelFoto2;
+    @FXML
+    private HBox panelFoto3;
+    @FXML
+    private HBox panelFoto4;
+    @FXML
+    private HBox panelFoto5;
+    @FXML
+    private HBox panelFoto6;
+    @FXML
+    private HBox panelFoto7;
+    @FXML
+    private Label gMarca;
+    @FXML
+    private Label gTipo;
+    @FXML
+    private Label gGenero;
+    @FXML
+    private Label gPrecio;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -342,22 +364,139 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
         paneImageMap.put(img6, new Image("/Images/Catalogo_Hombres/OufitMen6.png"));
         paneImageMap.put(img7, new Image("/Images/Catalogo_Hombres/OufitMen7.png"));
         paneImageMap.put(img8, new Image("/Images/Catalogo_Hombres/OufitMen8.png"));
+        paneImageMap.put(panelFoto, new Image("/Images/Catalogo_Hombres/OufitMen1.png"));
+        paneImageMap.put(panelFoto1, new Image("/Images/Catalogo_Hombres/OufitMen2.png"));
+        paneImageMap.put(panelFoto2, new Image("/Images/Catalogo_Hombres/OufitMen3.png"));
+        paneImageMap.put(panelFoto3, new Image("/Images/Catalogo_Hombres/OufitMen4.png"));
+        paneImageMap.put(panelFoto4, new Image("/Images/Catalogo_Hombres/OufitMen5.png"));
+        paneImageMap.put(panelFoto5, new Image("/Images/Catalogo_Hombres/OufitMen6.png"));
+        paneImageMap.put(panelFoto6, new Image("/Images/Catalogo_Hombres/OufitMen7.png"));
+        paneImageMap.put(panelFoto7, new Image("/Images/Catalogo_Hombres/OufitMen8.png"));
+    }
+
+    private void esconderPaneF(Pane p1, Pane p2, Pane p3, Pane p4, Pane p5, Pane p6, Pane p7) {
+        p1.setVisible(false);
+        p2.setVisible(false);
+        p3.setVisible(false);
+        p4.setVisible(false);
+        p5.setVisible(false);
+        p6.setVisible(false);
+        p7.setVisible(false);
     }
 
     @FXML
     private void mostrarProducto(MouseEvent event) {
         Pane eventPane = (Pane) event.getSource();
-
         Image image = paneImageMap.get(eventPane);
 
         panelFoto.getChildren().clear();
+        panelFoto1.getChildren().clear();
+        panelFoto2.getChildren().clear();
+        panelFoto3.getChildren().clear();
+        panelFoto4.getChildren().clear();
+        panelFoto5.getChildren().clear();
+        panelFoto6.getChildren().clear();
+        panelFoto7.getChildren().clear();
 
         ImageView imageViewAmpliada = new ImageView(image);
-        imageViewAmpliada.setFitWidth(200);
-        imageViewAmpliada.setFitHeight(200);
+        imageViewAmpliada.setFitWidth(300);
+        imageViewAmpliada.setFitHeight(300);
 
-        panelFoto.getChildren().add(imageViewAmpliada);
+        switch (eventPane.getParent().getId()) {
+            case "padre1":
+
+                gMarca.setText(lblMarca01.getText());
+                gTipo.setText(lblTipo01.getText());
+                gGenero.setText(lblGenero01.getText());
+                gPrecio.setText(lblPrecio01.getText());
+                cmbTallaP.setValue(cmbTalla1.getValue());
+                esconderPaneF(panelFoto1, panelFoto2, panelFoto3, panelFoto4, panelFoto5, panelFoto6, panelFoto7);
+                panelFoto.getChildren().add(imageViewAmpliada);
+                panelFoto.setVisible(true);
+                break;
+            case "padre2":
+
+                gMarca.setText(lblMarca02.getText());
+                gTipo.setText(lblTipo02.getText());
+                gGenero.setText(lblGenero02.getText());
+                gPrecio.setText(lblPrecio02.getText());
+                cmbTallaP.setValue(cmbTalla2.getValue());
+                esconderPaneF(panelFoto1, panelFoto2, panelFoto3, panelFoto4, panelFoto5, panelFoto6, panelFoto7);
+                panelFoto.getChildren().add(imageViewAmpliada);
+                panelFoto.setVisible(true);
+                break;
+            case "padre3":
+
+                gMarca.setText(lblMarca03.getText());
+                gTipo.setText(lblTipo03.getText());
+                gGenero.setText(lblGenero03.getText());
+                gPrecio.setText(lblPrecio03.getText());
+                cmbTallaP.setValue(cmbTalla3.getValue());
+                esconderPaneF(panelFoto1, panelFoto, panelFoto3, panelFoto4, panelFoto5, panelFoto6, panelFoto7);
+                panelFoto2.getChildren().add(imageViewAmpliada);
+                panelFoto2.setVisible(true);
+                break;
+            case "padre4":
+
+                gMarca.setText(lblMarca04.getText());
+                gTipo.setText(lblTipo04.getText());
+                gGenero.setText(lblGenero04.getText());
+                gPrecio.setText(lblPrecio04.getText());
+                cmbTallaP.setValue(cmbTalla4.getValue());
+                esconderPaneF(panelFoto1, panelFoto2, panelFoto, panelFoto4, panelFoto5, panelFoto6, panelFoto7);
+                panelFoto3.getChildren().add(imageViewAmpliada);
+                panelFoto3.setVisible(true);
+                break;
+            case "padre5":
+
+                gMarca.setText(lblMarca05.getText());
+                gTipo.setText(lblTipo05.getText());
+                gGenero.setText(lblGenero05.getText());
+                gPrecio.setText(lblPrecio05.getText());
+                cmbTallaP.setValue(cmbTalla5.getValue());
+                esconderPaneF(panelFoto1, panelFoto2, panelFoto3, panelFoto, panelFoto5, panelFoto6, panelFoto7);
+                panelFoto4.getChildren().add(imageViewAmpliada);
+                panelFoto4.setVisible(true);
+                break;
+            case "padre6":
+
+                gMarca.setText(lblMarca06.getText());
+                gTipo.setText(lblTipo06.getText());
+                gGenero.setText(lblGenero06.getText());
+                gPrecio.setText(lblPrecio06.getText());
+                cmbTallaP.setValue(cmbTalla6.getValue());
+                esconderPaneF(panelFoto1, panelFoto2, panelFoto3, panelFoto4, panelFoto, panelFoto6, panelFoto7);
+                panelFoto5.getChildren().add(imageViewAmpliada);
+                panelFoto5.setVisible(true);
+                break;
+            case "padre7":
+
+                gMarca.setText(lblMarca07.getText());
+                gTipo.setText(lblTipo07.getText());
+                gGenero.setText(lblGenero07.getText());
+                gPrecio.setText(lblPrecio07.getText());
+                cmbTallaP.setValue(cmbTalla7.getValue());
+                esconderPaneF(panelFoto1, panelFoto2, panelFoto3, panelFoto4, panelFoto5, panelFoto, panelFoto7);
+                panelFoto6.getChildren().add(imageViewAmpliada);
+                panelFoto6.setVisible(true);
+                break;
+            case "padre8":
+
+                gMarca.setText(lblMarca08.getText());
+                gTipo.setText(lblTipo08.getText());
+                gGenero.setText(lblGenero08.getText());
+                gPrecio.setText(lblPrecio08.getText());
+                cmbTallaP.setValue(cmbTalla8.getValue());
+                esconderPaneF(panelFoto1, panelFoto2, panelFoto3, panelFoto4, panelFoto5, panelFoto6, panelFoto);
+                panelFoto7.getChildren().add(imageViewAmpliada);
+                panelFoto7.setVisible(true);
+                break;
+            default:
+                throw new AssertionError();
+        }
+
         panelProducto.setVisible(true);
+
     }
 
     public boolean tomarDatosProducto(Label marca, Label tipo, Label precio, Label genero, ComboBox talla) {
@@ -397,6 +536,10 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
         ImageView miniV;
         Button btnComprar = new Button("Comprar");
         Button btnEliminar = new Button("Eliminar");
+        btnComprar.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
+        btnComprar.getStyleClass().add("btnAdd");
+        btnEliminar.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
+        btnEliminar.getStyleClass().add("btnAdd");
 
         GridPane contendElemtProductos = new GridPane();
         contendElemtProductos.setAlignment(Pos.CENTER);
@@ -441,8 +584,7 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
         }
         );
 
-        btnComprar.setOnAction(
-                new EventHandler<ActionEvent>() {
+        btnComprar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event
             ) {
@@ -458,7 +600,7 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
                 int id = 0;
                 do {
                     id = (int) Math.floor(Math.random() * (5000 - 10 + 1) + 10);
-                } while (pilaPH.getProId_H(id) != null);
+                } while (pilaP.getProId_H(id) != null);
 
                 Integer idP = id;
 
@@ -487,9 +629,9 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
                 producto.setPrecio(precio);
                 producto.setComprador(comprador);
 
-                pilaPH.setPushProducto_H(producto);
-                pilaPH.guardarDatosEnArchivoCompras(pilaPH.getPilaPH());
-                
+                pilaP.setPushProducto_H(producto);
+                pilaP.guardarDatosEnArchivoCompras(pilaP.getPilaPH());
+
                 GridPane grid1 = (GridPane) btnComprar.getParent();
                 Node image = getNodeFromGridPane(grid1, 1, 0);
                 Node total = getNodeFromGridPane(grid1, 1, 1);
@@ -523,7 +665,7 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
                 grid2.add(fecha2, 1, 2);
 
                 contenPagados.getChildren().add(grid2);
-                
+
                 panelContenCarrito.getChildren().remove(contendElemtProductos);
                 double t = 0;
                 for (int i = 0; i < panelContenCarrito.getChildren().size(); i++) {
@@ -1265,6 +1407,216 @@ public class Controller_View_Catalogo_Usuario implements Initializable {
         scrollPane.setVisible(false);
         scrollPane01.setVisible(false);
         panelContenProdPagados.setVisible(false);
+    }
+
+    private void procesarImagen(Pane paneFoto, Image image) {
+        Label lblTalla = new Label();
+        Label lblPrecio = new Label();
+        Label lblMarca = new Label();
+        Label lblGenero = new Label();
+        Label lblTipo = new Label();
+        Pane Imag = new Pane();
+        ImageView miniV;
+        Button btnComprar = new Button("Comprar");
+        Button btnEliminar = new Button("Eliminar");
+        btnComprar.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
+        btnComprar.getStyleClass().add("btnAdd");
+        btnEliminar.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
+        btnEliminar.getStyleClass().add("btnAdd");
+
+        GridPane contendElemtProductos = new GridPane();
+        contendElemtProductos.setAlignment(Pos.CENTER);
+        contendElemtProductos.setMaxSize(375, 394);
+        ColumnConstraints column = new ColumnConstraints();
+        column.setPrefWidth(panelContenCarrito.getWidth() / 2);
+
+        contendElemtProductos.getColumnConstraints().addAll(column);
+        contendElemtProductos.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, null, null)));
+        contendElemtProductos.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
+        contendElemtProductos.getStyleClass().add("gridCarro");
+
+        btnEliminar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Botón clickeado");
+                System.out.println(btnEliminar.getId());
+                panelContenCarrito.getChildren().remove(contendElemtProductos);
+                double t = 0;
+                for (int i = 0; i < panelContenCarrito.getChildren().size(); i++) {
+                    if (panelContenCarrito.getChildren().get(i) instanceof GridPane) {
+
+                        GridPane gridPane = (GridPane) panelContenCarrito.getChildren().get(i);
+
+                        Node dato = getNodeFromGridPane(gridPane, 1, 1);
+
+                        Label precio = (Label) dato;
+
+                        double p = Double.parseDouble(precio.getText());
+
+                        txtTotal.setText("$" + (p + t));
+                        String[] to = txtTotal.getText().split("\\$");
+                        t = Double.parseDouble(to[1]);
+                    }
+                }
+
+                if (panelContenCarrito.getChildren().isEmpty()) {
+                    txtTotal.setText("");
+                }
+            }
+        });
+
+        btnComprar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Botón clickeado");
+                System.out.println(btnComprar.getId());
+
+                Nodo_Producto producto = new Nodo_Producto();
+
+                Node marcaProducto = getNodeFromGridPane(contendElemtProductos, 2, 0);
+                Node tipoProducto = getNodeFromGridPane(contendElemtProductos, 0, 1);
+                Node precioProducto = getNodeFromGridPane(contendElemtProductos, 1, 1);
+
+                int id = 0;
+                do {
+                    id = (int) Math.floor(Math.random() * (5000 - 10 + 1) + 10);
+                } while (pilaP.getProId_H(id) != null);
+
+                Integer idP = id;
+
+                Label marcaLabel = (Label) marcaProducto;
+                String marca = marcaLabel.getText();
+
+                Label tipoLabel = (Label) tipoProducto;
+                String tipo = tipoLabel.getText();
+
+                Label precioLabel = (Label) precioProducto;
+                DecimalFormat formatoDecimal = new DecimalFormat("#.00");
+                long precio = 0;
+                try {
+                    precio = formatoDecimal.parse(precioLabel.getText()).longValue();
+                } catch (ParseException ex) {
+                    Logger.getLogger(Controller_View_Catalogo_Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                String comprador = labelUser.getText();
+
+                LocalDateTime fechaHoraActual = LocalDateTime.now();
+                producto.setFechaCompra(fechaHoraActual);
+                producto.setId(idP);
+                producto.setMarca(marca);
+                producto.setTipo(tipo);
+                producto.setPrecio(precio);
+                producto.setComprador(comprador);
+
+                pilaP.setPushProducto_H(producto);
+                pilaP.guardarDatosEnArchivoCompras(pilaP.getPilaPH());
+
+                GridPane grid1 = (GridPane) btnComprar.getParent();
+                Node image = getNodeFromGridPane(grid1, 1, 0);
+                Node total = getNodeFromGridPane(grid1, 1, 1);
+
+                Label pre = (Label) total;
+                Label precioT = new Label();
+                precioT.setText("Precio: " + pre.getText());
+
+                Label estado = new Label();
+                estado.setText("Estado: Enviado");
+
+                Label fecha1 = new Label();
+                Label fecha2 = new Label();
+                String f = String.valueOf(fechaHoraActual);
+                fecha1.setText(f);
+                String[] date = fecha1.getText().split("T");
+                fecha2.setText("Fecha envio: " + date[0]);
+
+                GridPane grid2 = new GridPane();
+                ColumnConstraints column = new ColumnConstraints();
+                column.setPrefWidth(contenPagados.getWidth() / 3);
+
+                grid2.getColumnConstraints().addAll(column);
+                grid2.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
+                grid2.getStylesheets().add(getClass().getResource("/Styles/Style.css").toExternalForm());
+                grid2.getStyleClass().add("gridCarro");
+
+                grid2.add(image, 0, 1);
+                grid2.add(precioT, 1, 0);
+                grid2.add(estado, 1, 1);
+                grid2.add(fecha2, 1, 2);
+
+                contenPagados.getChildren().add(grid2);
+
+                panelContenCarrito.getChildren().remove(contendElemtProductos);
+                double t = 0;
+                for (int i = 0; i < panelContenCarrito.getChildren().size(); i++) {
+                    if (panelContenCarrito.getChildren().get(i) instanceof GridPane) {
+
+                        GridPane gridPane = (GridPane) panelContenCarrito.getChildren().get(i);
+
+                        Node dato = getNodeFromGridPane(gridPane, 1, 1);
+
+                        Label precio2 = (Label) dato;
+
+                        double p = Double.parseDouble(precio2.getText());
+
+                        txtTotal.setText("$" + (p + t));
+                        String[] to = txtTotal.getText().split("\\$");
+                        t = Double.parseDouble(to[1]);
+                    }
+                }
+
+                if (panelContenCarrito.getChildren().isEmpty()) {
+                    txtTotal.setText("");
+                }
+            }
+        });
+
+        if (paneFoto.isVisible()) {
+            miniV = new ImageView(image);
+            miniV.setFitHeight(40);
+            miniV.setFitWidth(30);
+            Imag.getChildren().add(miniV);
+
+            lblTalla.setText(cmbTallaP.getValue());
+            lblPrecio.setText(gPrecio.getText());
+            lblMarca.setText(gMarca.getText());
+            lblGenero.setText(gGenero.getText());
+            lblTipo.setText(gTipo.getText());
+
+            contendElemtProductos.add(Imag, 0, 1);
+            contendElemtProductos.add(lblMarca, 0, 2);
+            contendElemtProductos.add(lblTipo, 1, 0);
+            contendElemtProductos.add(lblGenero, 2, 0);
+            contendElemtProductos.add(lblTalla, 2, 1);
+            contendElemtProductos.add(lblPrecio, 1, 1);
+            contendElemtProductos.add(btnComprar, 1, 2);
+            contendElemtProductos.add(btnEliminar, 2, 2);
+
+            if (tomarDatosProducto(gMarca, gTipo, gPrecio, gGenero, cmbTallaP)) {
+                panelContenCarrito.getChildren().add(contendElemtProductos);
+            }
+        }
+    }
+
+    @FXML
+    private void agCarrito(ActionEvent event) {
+        if (event.getSource() == btnAggCarritoP && panelFoto.isVisible()) {
+            procesarImagen(panelFoto, paneImageMap.get(panelFoto));
+        } else if (event.getSource() == btnAggCarritoP && panelFoto1.isVisible()) {
+            procesarImagen(panelFoto1, paneImageMap.get(panelFoto1));
+        } else if (event.getSource() == btnAggCarritoP && panelFoto2.isVisible()) {
+            procesarImagen(panelFoto2, paneImageMap.get(panelFoto2));
+        } else if (event.getSource() == btnAggCarritoP && panelFoto3.isVisible()) {
+            procesarImagen(panelFoto3, paneImageMap.get(panelFoto3));
+        } else if (event.getSource() == btnAggCarritoP && panelFoto4.isVisible()) {
+            procesarImagen(panelFoto4, paneImageMap.get(panelFoto4));
+        } else if (event.getSource() == btnAggCarritoP && panelFoto5.isVisible()) {
+            procesarImagen(panelFoto5, paneImageMap.get(panelFoto5));
+        } else if (event.getSource() == btnAggCarritoP && panelFoto6.isVisible()) {
+            procesarImagen(panelFoto6, paneImageMap.get(panelFoto6));
+        } else if (event.getSource() == btnAggCarritoP && panelFoto7.isVisible()) {
+            procesarImagen(panelFoto7, paneImageMap.get(panelFoto7));
+        }
     }
 
 }
