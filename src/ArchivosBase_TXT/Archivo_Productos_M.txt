@@ -1,0 +1,8 @@
+src/Images/Catalogo_Hombres/OufitMen1.png, NIKE, CAMISETA, 103900, MASCULINO    
+src/Images/Catalogo_Hombres/OufitMen2.png, NIKE, CAMISETA, 117900, MASCULINO
+src/Images/Catalogo_Hombres/OufitMen3.png, NIKE, CAMISETA, 130900, MASCULINO
+src/Images/Catalogo_Hombres/OufitMen4.png, NIKE, BUZO, 237900, MASCULINO
+src/Images/Catalogo_Hombres/OufitMen5.png, MOVIES, JOGGER-BEIGE, 79995, MASCULINO
+src/Images/Catalogo_Hombres/OufitMen6.png, MOVIES, JOGGER-GRIS, 74995, MASCULINO
+src/Images/Catalogo_Hombres/OufitMen7.png, HA, JOGGER-NEGRO, 129900, MASCULINO
+src/Images/Catalogo_Hombres/OufitMen8.png, HA, JOGGER, 94900, MASCULINO

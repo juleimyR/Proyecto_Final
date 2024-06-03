@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="660.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller_View_Arranque">
+    <stylesheets>
+        <URL value="@/Styles/Style.css" />
+    </stylesheets>
+    <children>
+        <Pane prefHeight="330.0" prefWidth="1120.0" style="-fx-background-color: F6C5C5;">
+            <children>
+                <Pane layoutX="524.0" layoutY="29.0" prefHeight="49.0" prefWidth="545.0" style="-fx-background-color: FFFFFF;">
+                    <children>
+                        <ImageView fitHeight="49.0" fitWidth="283.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../Images/Inicio/Estrellas2.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="49.0" fitWidth="283.0" layoutX="262.0" layoutY="-1.0" pickOnBounds="true">
+                            <image>
+                                <Image url="@../Images/Inicio/Estrellas2.png" />
+                            </image>
+                        </ImageView>
+                        <Button fx:id="btnAdmin" alignment="CENTER_RIGHT" layoutY="5.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="39.0" prefWidth="100.0" styleClass="Buttons" stylesheets="@../Styles/Style.css" text="Admin">
+                            <font>
+                                <Font name="Bodoni MT" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="btnSign_In" layoutX="307.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="39.0" prefWidth="100.0" styleClass="Buttons" stylesheets="@../Styles/Style.css" text="Sign in">
+                            <font>
+                                <Font name="Bodoni MT" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="btnLogin" layoutX="431.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="39.0" prefWidth="100.0" styleClass="Buttons" stylesheets="@../Styles/Style.css" text="Login">
+                            <font>
+                                <Font name="Bodoni MT" size="20.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                    </children>
+                </Pane>
+            <Button fx:id="btnSalir" layoutX="1093.0" layoutY="-1.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="25.0" prefWidth="28.0" styleClass="btnSalir" stylesheets="@../Styles/Style.css" text="X">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnMin" alignment="CENTER" contentDisplay="CENTER" layoutX="1065.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="25.0" prefWidth="28.0" styleClass="btnMin" stylesheets="@../Styles/Style.css" text="-">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="Link4" layoutX="26.0" layoutY="283.0" mnemonicParsing="false" onAction="#irLink" style="-fx-background-color: F6C5C5;" styleClass="link-button" stylesheets="@../Styles/Style.css">
+               <graphic>
+                  <ImageView fx:id="imaLink4" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/face1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            </children>
+        </Pane>
+        <Pane layoutY="330.0" prefHeight="330.0" prefWidth="1120.0" style="-fx-background-color: B1DDF1;" stylesheets="@../Styles/Style.css">
+         <children>
+            <Button fx:id="Link1" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#irLink" style="-fx-background-color: B1DDF1;" styleClass="link-button">
+               <graphic>
+                  <ImageView fx:id="imaLink1" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/git1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="Link2" layoutX="26.0" layoutY="74.0" mnemonicParsing="false" onAction="#irLink" prefHeight="34.0" prefWidth="28.0" style="-fx-background-color: B1DDF1;" styleClass="link-button">
+               <graphic>
+                  <ImageView fx:id="imaLink2" fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/insta1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="Link3" layoutX="26.0" layoutY="141.0" mnemonicParsing="false" onAction="#irLink" prefHeight="34.0" prefWidth="28.0" style="-fx-background-color: B1DDF1;" styleClass="link-button">
+               <graphic>
+                  <ImageView fx:id="imaLink3" fitHeight="28.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Icons/whats1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></Pane>
+        <AnchorPane layoutX="91.0" layoutY="99.0" prefHeight="499.0" prefWidth="1029.0" style="-fx-background-color: FFFFFF;">
+            <children>
+                <ImageView fitHeight="503.0" fitWidth="506.0" layoutX="526.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Images/Inicio/ImageArranque.jpeg" />
+                    </image>
+                </ImageView>
+                <Pane layoutX="6.0" prefHeight="503.0" prefWidth="520.0" style="-fx-background-color: FFFFFF;">
+                    <children>
+                        <Text layoutX="48.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="auténtico yo. ¡Viste con confianza, vive con">
+                            <font>
+                                <Font name="Bodoni MT" size="15.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="48.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="pasión!">
+                            <font>
+                                <Font name="Bodoni MT" size="15.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="47.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descubre tu mejor versión con cada compra. Cada">
+                            <font>
+                                <Font name="Bodoni MT" size="15.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="47.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prenda es una oportunidad para expresar tu">
+                            <font>
+                                <Font name="Bodoni MT" size="15.0" />
+                            </font>
+                        </Text>
+                        <Circle fill="WHITE" layoutX="540.0" layoutY="110.0" radius="30.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Circle fill="WHITE" layoutX="521.0" layoutY="366.0" radius="30.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Polygon fill="WHITE" layoutX="530.0" layoutY="40.0" points="-50.0, 40.0, 35.0, 53.0, -23.0, -17.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Polygon fill="WHITE" layoutX="530.0" layoutY="396.0" points="-41.0, 61.0, -50.0, -19.0, 13.94110107421875, -10.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Polygon fill="WHITE" layoutX="540.0" layoutY="267.0" points="-41.0, 61.0, -50.0, -19.0, 8.0, 85.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Polygon fill="WHITE" layoutX="544.0" layoutY="149.0" points="-69.0, -21.0, -54.0, 40.0, 20.0, -21.0" stroke="WHITE" strokeType="INSIDE" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="367.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Images/Inicio/Estrellas.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+        <Pane layoutX="10.0" layoutY="10.0" prefHeight="213.0" prefWidth="371.0" style="-fx-background-color: FFFFFF;">
+            <children>
+                <ImageView fitHeight="177.0" fitWidth="350.0" layoutX="11.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Images/Inicio/Logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="320.0" layoutY="150.0" prefHeight="155.0" prefWidth="283.0">
+            <children>
+                <Text layoutX="10.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VISTE CON CONFIANZA, ">
+                    <font>
+                        <Font name="Baskerville Old Face" size="22.0" />
+                    </font>
+                </Text>
+                <Text layoutX="16.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" CONQUISTA EL MUNDO!">
+                    <font>
+                        <Font name="Baskerville Old Face" size="22.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

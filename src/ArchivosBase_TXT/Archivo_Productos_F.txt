@@ -1,0 +1,8 @@
+src/Images/Catalogo_Mujeres/OufitWoman1.png, PUFF GIRL, CAMISETA, 49254, FEMENINO
+src/Images/Catalogo_Mujeres/OufitWoman2.png, CALVIN KLEIN, BUZO-BLANCO, 389900, FEMENINO
+src/Images/Catalogo_Mujeres/OufitWoman3.png, GENERICO, BUZO HOODIE, 103000, FEMENINO
+src/Images/Catalogo_Mujeres/OufitWoman4.png, GENERICO, BUZO HOODIE, 103000, FEMENINO
+src/Images/Catalogo_Mujeres/OufitWoman5.png, SHINYINYY, MINI FALDA, 57835, FEMENINO
+src/Images/Catalogo_Mujeres/OufitWoman6.png, ZARA, CONJUNTO, 126440, FEMENINO
+src/Images/Catalogo_Mujeres/OufitWoman7.png, REDANK, JOGGER-SHORT, 31500, FEMENINO
+src/Images/Catalogo_Mujeres/OufitWoman8.png, MOVIES, JOGGER, 94990, FEMENINO
