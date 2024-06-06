@@ -215,7 +215,7 @@
 }
 
 .btnIcon:pressed{
-    -fx-cursor: closed-hand;
+    -fx-cursor: CLOSED_HAND;
 }
 
 /*Menú items*/
